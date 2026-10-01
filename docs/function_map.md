@@ -13,6 +13,7 @@
 | 细胞状态密度和时间连续化 | 高维 cell representation，可选时间点/样本 metadata | `python/09_mellon_template.py` | diffusion/PCA 表示上的密度 baseline | cell-state density、gene-change score、时间连续化 | 密度是表示空间中的占据，不是因果 lineage 或细胞比例 |
 | 预训练 embedding、注释和扰动预测 | `.h5ad`/表达矩阵、checkpoint | `python/02_scgpt_embedding_template.py` | scFoundation、UCE | embedding、annotation 或 perturbation prediction | 小样本时不能把 embedding 当作独立统计证据 |
 | 大规模单细胞表示和药物反应 | `.h5ad`、模型权重、GPU | `python/03_scFoundation_embedding_template.py` | scGPT、PCA/scVI baseline | embedding、任务预测 | 没有固定 checkpoint、显存和 baseline 时不宜直接用于论文主结论 |
+| 单细胞/组织上下文的蛋白表示和靶点优先级 | 表达矩阵/AnnData、PPI 网络、cell-type/tissue metadata | `python/14_pinnacle_manifest.py` | PPI/network baseline、任务特异分类/排序模型 | context-aware protein/cell representation、target/drug prioritization | 网络版本、上下文标签或 held-out 评估缺失时，不要解释成因果蛋白功能或疗效 |
 | 空间 niche 和组织环境 | 空间转录组或带空间上下文的单细胞数据 | `python/04_nicheformer_template.py` | 传统邻域统计、空间配体-受体分析 | niche embedding、context prediction | 域偏移明显或没有空间验证时只能作为探索结果 |
 | 多模态空间组学整合 | 共享 spot/cell key 的多种空间组学和图像特征 | `python/10_miso_manifest.py` | MISO 与传统 modality-specific clustering | multimodal embedding、spatial clusters | 模态未对齐、坐标约定不一致或旧环境无法固定时不要运行 |
 | 选择多模态整合器 | paired、unpaired 或 mosaic 数据集清单 | `python/11_scmmib_manifest.py` | SCMMIB benchmark | accuracy、robustness、scalability | benchmark 排名依赖任务和模态，不能直接视为普适排名 |
@@ -48,7 +49,7 @@
 
 ### foundation model 试用
 
-`baseline → input audit → checkpoint manifest → model inference → held-out evaluation → biological validation`。如果模型只产生 embedding，就必须预先定义下游任务和评价指标，不能只展示 UMAP。
+`baseline → input audit → checkpoint/network manifest → model inference → held-out evaluation → biological validation`。如果模型只产生 embedding，就必须预先定义下游任务和评价指标，不能只展示 UMAP。PINNACLE 还要把 PPI 网络版本和上下文标签粒度纳入审计。
 
 ## 结果分级建议
 
