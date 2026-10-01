@@ -24,6 +24,7 @@ smoke-method-manifests:
 	python python/16_spatialdata_manifest.py --datasets data/mock/spatialdata_table.csv --elements table points --coordinate-system tissue --platform synthetic --output /tmp/nm_spatialdata_manifest.json
 	python python/17_scikit_bio_manifest.py --inputs data/mock/narmbench_reference.fa --operation sequence --format FASTA --output /tmp/nm_scikit_bio_manifest.json
 	python python/18_saccelerator_manifest.py --datasets data/mock/spatialdata_table.csv --methods baseline consensus --metrics ARI CHAOS PAS spot_entropy --platform synthetic --output /tmp/nm_saccelerator_manifest.json
+	python python/19_novae_manifest.py --inputs data/mock/spatialdata_table.csv --task domain_inference --platform synthetic --output /tmp/nm_novae_manifest.json
 
 compile-python:
 	python -m compileall -q python

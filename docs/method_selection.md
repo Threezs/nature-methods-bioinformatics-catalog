@@ -22,7 +22,7 @@ PHLOWER 适合有两种以上已对齐单细胞模态、且问题确实包含复
 
 Mellon 适合回答“高维单细胞表示中哪些状态区域稠密/稀疏、状态密度如何随时间连续变化”这类问题。先固定表示（例如 PCA 或 diffusion representation）和邻域参数，再把 density 与细胞类型、时间点和 sample/donor 对照；不要把 density 当作 lineage probability，也不要把低密度状态直接写成稀有细胞比例。
 
-scGPT、scFoundation、Nicheformer、Monod、SATURN、UCE 和 PINNACLE 都应被当作扩展分析。当前目录中的这些入口主要生成并审计 manifest，实际模型推理仍需官方包、checkpoint、GPU/配置和版本锁定。每次运行要和简单可解释 baseline（PCA/nearest-neighbor、edgeR/DESeq2、PPI/network baseline 或经典 CellRank）比较。
+scGPT、scFoundation、Nicheformer、Novae、Monod、SATURN、UCE 和 PINNACLE 都应被当作扩展分析。当前目录中的这些入口主要生成并审计 manifest，实际模型推理仍需官方包、checkpoint、GPU/配置和版本锁定。每次运行要和简单可解释 baseline（PCA/nearest-neighbor、edgeR/DESeq2、PPI/network baseline 或经典 CellRank）比较。
 
 PINNACLE 适合把 cell type、tissue 和蛋白互作网络放进同一个上下文表示框架，用于候选蛋白、靶点或药物的优先级排序。使用前必须固定表达矩阵/AnnData 的版本、PPI 网络来源和版本、上下文标签粒度、checkpoint 哈希以及下游任务的 held-out split。结果是 context-aware representation 或 prioritization score，不能单独证明蛋白的因果功能、药物疗效或跨组织可迁移性。
 
@@ -33,6 +33,8 @@ SpatialData 是空间组学分析的基础设施层，不是一个自动完成�
 scikit-bio 是通用 Python 工具层，适合把序列、feature table、距离、多样性、分类、taxonomy 或系统发育操作放进同一套可记录的输入/输出契约。先用 `python/17_scikit_bio_manifest.py` 固定操作、文件格式、样本/序列 ID 和 metadata，再在 assay-specific 的统计设计和样本级重复上运行官方 API。它提供数据结构和算法，不替代实验单位、协变量、零假设或独立生物学验证。
 
 SACCELERATOR 适合回答“空间感知聚类在多平台、多组织和多数据集上是否稳定、不同方法在哪里分歧”这类评估问题。先用 `python/18_saccelerator_manifest.py` 固定数据集、方法版本、坐标、ARI/NMI 与 CHAOS/PAS/entropy 指标，再按数据集分别报告结果。手工解剖标签应作为比较层和专家反馈输入，而不是自动当作真值；共识聚类和高分歧区域要回到组织专家、原始图像和独立实验验证。
+
+Novae 适合回答“空间转录组中的细胞/spot domain 是否能跨 gene panel、组织或技术平台稳定迁移，以及哪些基因/通路和组织架构与 domain 相关”这类问题。先用 `python/19_novae_manifest.py` 固定输入元素、平台、gene-panel、batch key、checkpoint 和 section-level split，再与邻域聚类、marker/图像标注和 held-out section 比较。domain assignment、空间可变基因和 pathway score 是模型依赖的摘要；没有 registration、panel coverage 和正交 marker 验证时，不能把它们写成稳定的组织边界或因果机制。
 
 scMultiBench 是 SCMMIB 的互补路线：它把 dimension reduction、batch correction、clustering、classification、imputation、feature selection 和 spatial registration 分开评估，并区分 vertical/diagonal/mosaic/cross 结构。使用时先选定任务和 split，再报告任务级指标，不能把多个任务压成一个“最佳方法”。
 

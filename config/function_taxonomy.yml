@@ -47,6 +47,10 @@ categories:
     label: 空间域聚类、指标和专家共识
     stage: 2
     methods: [SACCELERATOR_2026]
+  - id: spatial_foundation_models
+    label: 空间 foundation model、域推断和组织架构
+    stage: 2
+    methods: [NOVAE_2025]
   - id: bioinformatics_toolkit
     label: 通用序列、表格、距离和系统发育工具
     stage: 1
@@ -88,6 +92,8 @@ selection_rules:
     prefer: SCIKITBIO_2026
   - if: spatial_domain_clustering_or_method_consensus
     require: SACCELERATOR_2026_metric_and_expert_review
+  - if: spatial_domain_or_architecture_inference
+    require: SPATIALDATA_2025_coordinate_and_element_audit_and_NOVAE_2025_checkpoint_manifest
   - if: long_read_bam_available
     prefer: BAMBU_2023
   - if: transcript_counts_with_replicates

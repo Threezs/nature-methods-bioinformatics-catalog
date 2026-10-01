@@ -52,6 +52,16 @@ spatial_clustering:
   metrics: [ARI, CHAOS, PAS, spot_entropy, consensus_entropy]
   expert_labels: data/real/expert_labels.csv
   treat_manual_labels_as_ground_truth: false
+spatial_foundation_model:
+  framework: Novae
+  inputs: [data/real/spatialdata.zarr]
+  task: domain_inference
+  checkpoint: models/novae_checkpoint.pt
+  gene_panel: data/real/gene_panel.tsv
+  platform: record_platform_and_tissue
+  record_batch_key: true
+  record_section_split: true
+  validate_with_orthogonal_markers: true
 reproducibility:
   save_session_info: true
   save_command_line: true
