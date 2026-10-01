@@ -20,7 +20,9 @@ CellRank 2 应该在已有 kNN 邻居图、pseudotime、RNA velocity 或时间�
 
 Mellon 适合回答“高维单细胞表示中哪些状态区域稠密/稀疏、状态密度如何随时间连续变化”这类问题。先固定表示（例如 PCA 或 diffusion representation）和邻域参数，再把 density 与细胞类型、时间点和 sample/donor 对照；不要把 density 当作 lineage probability，也不要把低密度状态直接写成稀有细胞比例。
 
-scGPT、scFoundation、Nicheformer、Monod、SATURN 和 UCE 都应被当作扩展分析。当前目录中的这些入口主要生成并审计 manifest，实际模型推理仍需官方包、checkpoint、GPU/配置和版本锁定。每次运行要和简单可解释 baseline（PCA/nearest-neighbor、edgeR/DESeq2 或经典 CellRank）比较。
+scGPT、scFoundation、Nicheformer、Monod、SATURN、UCE 和 PINNACLE 都应被当作扩展分析。当前目录中的这些入口主要生成并审计 manifest，实际模型推理仍需官方包、checkpoint、GPU/配置和版本锁定。每次运行要和简单可解释 baseline（PCA/nearest-neighbor、edgeR/DESeq2、PPI/network baseline 或经典 CellRank）比较。
+
+PINNACLE 适合把 cell type、tissue 和蛋白互作网络放进同一个上下文表示框架，用于候选蛋白、靶点或药物的优先级排序。使用前必须固定表达矩阵/AnnData 的版本、PPI 网络来源和版本、上下文标签粒度、checkpoint 哈希以及下游任务的 held-out split。结果是 context-aware representation 或 prioritization score，不能单独证明蛋白的因果功能、药物疗效或跨组织可迁移性。
 
 MISO 和 SCMMIB 面向多模态场景。MISO 的第一步不是下载权重，而是确认所有模态共享 spot/cell key、坐标系和预处理版本；SCMMIB 用来按 paired/unpaired/mosaic 任务记录 accuracy、robustness、scalability，而不是替代一个具体整合器。MISO 当前官方仓库要求 Python 3.7 和 Git-LFS，因此目录只生成 manifest，不把旧环境伪装成已复现。
 
