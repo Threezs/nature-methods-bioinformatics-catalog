@@ -1,0 +1,15 @@
+.Rhistory
+.Rproj.user/
+*.Rproj
+__pycache__/
+*.pyc
+.venv/
+models/
+data/real/
+results/
+logs/
+*.h5ad
+*.bam
+*.bai
+*.loom
+*.rds
