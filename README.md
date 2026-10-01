@@ -96,7 +96,7 @@ R 入口是可复用函数，示例见各脚本末尾和 [`docs/quickstart.md`](
 
 ## 近期方法范围
 
-目录目前收录 17 个论文/评估条目和 4 个通用 R/Python 工具模板，覆盖 2021–2026 年的单细胞变换、feature selection、命运推断、cell-state density、foundation model、蛋白上下文、多模态空间组学、整合 benchmark、跨物种整合、长读长、DTU 和 nanopore RNA 修饰。新增的 Nature Methods 条目包括 Mellon、MISO、SCMMIB、scMultiBench、NaRMBench 和 PINNACLE；它们目前都先生成可审计 manifest，实际模型/benchmark 运行仍需官方环境。
+目录目前收录 17 个论文/评估条目和 5 个通用 R/Python 工具模板，覆盖 2021–2026 年的单细胞变换、feature selection、命运推断、cell-state density、foundation model、蛋白上下文、多模态空间组学、整合 benchmark、跨物种整合、长读长、DTU 和 nanopore RNA 修饰。新增的 Nature Methods 条目包括 Mellon、MISO、SCMMIB、scMultiBench、NaRMBench 和 PINNACLE；它们目前都先生成可审计 manifest，实际模型/benchmark 运行仍需官方环境。
 
 ## 相关仓库
 
