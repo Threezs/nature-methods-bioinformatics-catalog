@@ -20,6 +20,7 @@ smoke-method-manifests:
 	python python/12_scmultibench_manifest.py --dataset-manifest data/mock/multimodal_dataset_manifest.csv --tasks dimension_reduction clustering --output /tmp/nm_scmultibench_manifest.json
 	python python/13_narmbench_manifest.py --reads data/mock/narmbench_reads.fastq --reference data/mock/narmbench_reference.fa --output /tmp/nm_narmbench_manifest.json
 	python python/14_pinnacle_manifest.py --expression data/mock/scrna_counts.csv --ppi-network data/mock/protein_network.tsv --context-metadata data/mock/context_metadata.csv --output /tmp/nm_pinnacle_manifest.json
+	python python/15_phlower_manifest.py --modalities data/mock/scrna_counts.csv data/mock/cell_scores.csv --cell-metadata data/mock/scrna_metadata.csv --root-label control --task both --output /tmp/nm_phlower_manifest.json
 
 compile-python:
 	python -m compileall -q python
