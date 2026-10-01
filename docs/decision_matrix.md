@@ -18,6 +18,7 @@
 | CRLM 空间组学 | input audit → spatial baseline | Nicheformer 或 MISO；多模态选择用 SCMMIB/scMultiBench |
 | 长读长转录组 | Bambu transcript discovery | satuRn DTU；若是 direct-RNA 修饰则转 NaRMBench |
 | 跨物种 atlas | ortholog/reference audit | SATURN/UCE，并报告 protein/vocabulary coverage |
-| 蛋白靶点和药物优先级 | expression + PPI + context metadata audit | PINNACLE；报告网络版本、上下文分层和 held-out 指标 |\n| 多模态复杂分支轨迹 | shared cell ID + root/direction audit | PHLOWER；与 CellRank/graph baseline 比较 branch stability |
+| 蛋白靶点和药物优先级 | expression + PPI + context metadata audit | PINNACLE；报告网络版本、上下文分层和 held-out 指标 |
+| 多模态复杂分支轨迹 | shared cell ID + root/direction audit | PHLOWER；与 CellRank/graph baseline 比较 branch stability |
 
 矩阵只用于形成可审计的候选方案；最终结果仍需项目自己的样本量、重复、外部验证和实验设计支持。
