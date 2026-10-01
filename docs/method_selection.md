@@ -32,6 +32,8 @@ SpatialData 是空间组学分析的基础设施层，不是一个自动完成�
 
 scikit-bio 是通用 Python 工具层，适合把序列、feature table、距离、多样性、分类、taxonomy 或系统发育操作放进同一套可记录的输入/输出契约。先用 `python/17_scikit_bio_manifest.py` 固定操作、文件格式、样本/序列 ID 和 metadata，再在 assay-specific 的统计设计和样本级重复上运行官方 API。它提供数据结构和算法，不替代实验单位、协变量、零假设或独立生物学验证。
 
+SACCELERATOR 适合回答“空间感知聚类在多平台、多组织和多数据集上是否稳定、不同方法在哪里分歧”这类评估问题。先用 `python/18_saccelerator_manifest.py` 固定数据集、方法版本、坐标、ARI/NMI 与 CHAOS/PAS/entropy 指标，再按数据集分别报告结果。手工解剖标签应作为比较层和专家反馈输入，而不是自动当作真值；共识聚类和高分歧区域要回到组织专家、原始图像和独立实验验证。
+
 scMultiBench 是 SCMMIB 的互补路线：它把 dimension reduction、batch correction、clustering、classification、imputation、feature selection 和 spatial registration 分开评估，并区分 vertical/diagonal/mosaic/cross 结构。使用时先选定任务和 split，再报告任务级指标，不能把多个任务压成一个“最佳方法”。
 
 NaRMBench 放在长读长 RNA 专题，而不是常规转录本定量路径。它用于比较 nanopore direct-RNA 修饰检测工具和 retraining 方案；RNA002/RNA004 chemistry、ground truth、重训练样本和 site-level calibration 都必须记录。结果只能支持“检测工具在该 chemistry/数据条件下的表现”，不能直接写成全转录组修饰机制。

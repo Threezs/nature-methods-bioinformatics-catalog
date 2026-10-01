@@ -43,6 +43,10 @@ categories:
     label: 空间组学数据结构、坐标和互操作
     stage: 1
     methods: [SPATIALDATA_2025]
+  - id: spatial_clustering_consensus
+    label: 空间域聚类、指标和专家共识
+    stage: 2
+    methods: [SACCELERATOR_2026]
   - id: bioinformatics_toolkit
     label: 通用序列、表格、距离和系统发育工具
     stage: 1
@@ -82,6 +86,8 @@ selection_rules:
     require: SPATIALDATA_2025_coordinate_and_element_audit
   - if: sequence_table_distance_or_phylogeny_operation
     prefer: SCIKITBIO_2026
+  - if: spatial_domain_clustering_or_method_consensus
+    require: SACCELERATOR_2026_metric_and_expert_review
   - if: long_read_bam_available
     prefer: BAMBU_2023
   - if: transcript_counts_with_replicates

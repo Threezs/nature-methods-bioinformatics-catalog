@@ -22,5 +22,6 @@
 | 多模态复杂分支轨迹 | shared cell ID + root/direction audit | PHLOWER；与 CellRank/graph baseline 比较 branch stability |
 | 跨平台空间组学 | element/coordinate/unit/serialization audit | SpatialData；再进入 Nicheformer、MISO 或传统空间邻域分析 |
 | 序列、距离、多样性、分类或系统发育 | operation + format + metadata audit | scikit-bio；再按 assay 选择统计检验和样本级设计 |
+| 空间域聚类稳定性和方法分歧 | dataset/method/coordinate/metric/expert-review audit | SACCELERATOR；同时报告非空间和空间指标，再做专家与实验验证 |
 
 矩阵只用于形成可审计的候选方案；最终结果仍需项目自己的样本量、重复、外部验证和实验设计支持。

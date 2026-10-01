@@ -45,6 +45,13 @@ bioinformatics_toolkit:
   input_format: record_FASTA_FASTQ_BIOM_TSV_Newick_or_other
   record_sample_ids: true
   record_assay_specific_metadata: true
+spatial_clustering:
+  framework: SACCELERATOR
+  datasets: [data/real/spatialdata.zarr]
+  methods: [record_method_names_and_commits]
+  metrics: [ARI, CHAOS, PAS, spot_entropy, consensus_entropy]
+  expert_labels: data/real/expert_labels.csv
+  treat_manual_labels_as_ground_truth: false
 reproducibility:
   save_session_info: true
   save_command_line: true

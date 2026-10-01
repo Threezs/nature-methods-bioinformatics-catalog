@@ -18,6 +18,7 @@
 | MISO | 官方仓库 Python 3.7 环境；Git-LFS | 小于万 spot 的训练可先 CPU/GPU 试跑；图像特征提取更重 | 多模态空间数据、对齐图像特征、ViT 权重 | 当前只生成 manifest |
 | SpatialData | 官方 scverse Python 环境（SpatialData + spatialdata-io/transform） | 主要受 Zarr/图像/shape 数据量和 I/O 影响 | SpatialData/Zarr、平台元素、坐标系和变换 | 当前只生成 manifest |
 | scikit-bio | 官方 Python 环境（scikit-bio 及其操作所需的 NumPy/SciPy 等依赖） | 取决于序列、feature table、距离矩阵或系统发育树规模 | FASTA/FASTQ、BIOM/TSV、metadata、distance/tree | 当前只生成 manifest |
+| SACCELERATOR | 官方 SACCELERATOR 环境及各聚类方法的隔离依赖 | 多数据集、方法和图像/空间对象会增加 CPU、内存和存储 | 空间数据、坐标、方法配置、指标和可选 expert labels | 当前只生成 manifest |
 | SCMMIB | 官方 benchmark/pipeline 环境 | 依任务规模而定，需记录 CPU/GPU/内存 | paired/unpaired/mosaic 数据集和任务清单 | 当前只生成 manifest |
 | scMultiBench | 官方 scMultiBench 环境 | 多任务 benchmark 需记录 CPU/GPU/内存和 split | multimodal datasets、任务清单和评估配置 | 当前只生成 manifest |
 | NaRMBench | 官方 nanopore/修饰工具环境 | basecalling/alignment/retraining 可能需要 GPU、大磁盘和长运行时间 | direct-RNA reads、reference、RNA002/RNA004、ground truth | 当前只生成 manifest |
@@ -50,7 +51,7 @@ renv::snapshot()
 
 ### C. Python 方法环境
 
-CellRank、scGPT、scFoundation、PINNACLE、Nicheformer、SpatialData、scikit-bio、Monod、SATURN 和 UCE 的依赖可能互相冲突。按官方仓库的 `environment.yml`、`requirements.txt` 或安装说明单独建环境，不要为了方便把所有模型装在一个环境里。
+CellRank、scGPT、scFoundation、PINNACLE、Nicheformer、SpatialData、scikit-bio、SACCELERATOR、Monod、SATURN 和 UCE 的依赖可能互相冲突。按官方仓库的 `environment.yml`、`requirements.txt` 或安装说明单独建环境，不要为了方便把所有模型装在一个环境里。
 
 ## 每次运行都要记录
 
