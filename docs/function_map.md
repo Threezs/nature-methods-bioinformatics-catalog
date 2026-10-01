@@ -11,6 +11,7 @@
 | 特征排序、可选正式 HVG 和分组候选 marker | count 矩阵、batch、细胞标签 | `R/02_feature_selection_benchmark.R` | 默认透明 variance ranking；可选 `select_hvg_scran()` | feature table、选择分数 | 默认函数不是 replicate-aware DE；不要把均值效应写成机制证据 |
 | 轨迹、命运和终末状态 | `.h5ad`、邻居图、pseudotime 或 velocity | `python/01_cellrank2_template.py` | CellRank 2 的多 kernel 比较 | fate probabilities、terminal states | 没有状态变化先验时不要把 fate probability 当成事实 |
 | 细胞状态密度和时间连续化 | 高维 cell representation，可选时间点/样本 metadata | `python/09_mellon_template.py` | diffusion/PCA 表示上的密度 baseline | cell-state density、gene-change score、时间连续化 | 密度是表示空间中的占据，不是因果 lineage 或细胞比例 |
+| 多模态复杂分支轨迹 | 两种以上共享 cell ID 的模态、cell metadata、可选 root/terminal labels | `python/15_phlower_manifest.py` | CellRank、graph/trajectory baseline | trajectory/edge-flow embeddings、分化树、候选调控因子 | 没有方向、根节点或跨模态对齐时，不要解释成已证实谱系 |
 | 预训练 embedding、注释和扰动预测 | `.h5ad`/表达矩阵、checkpoint | `python/02_scgpt_embedding_template.py` | scFoundation、UCE | embedding、annotation 或 perturbation prediction | 小样本时不能把 embedding 当作独立统计证据 |
 | 大规模单细胞表示和药物反应 | `.h5ad`、模型权重、GPU | `python/03_scFoundation_embedding_template.py` | scGPT、PCA/scVI baseline | embedding、任务预测 | 没有固定 checkpoint、显存和 baseline 时不宜直接用于论文主结论 |
 | 单细胞/组织上下文的蛋白表示和靶点优先级 | 表达矩阵/AnnData、PPI 网络、cell-type/tissue metadata | `python/14_pinnacle_manifest.py` | PPI/network baseline、任务特异分类/排序模型 | context-aware protein/cell representation、target/drug prioritization | 网络版本、上下文标签或 held-out 评估缺失时，不要解释成因果蛋白功能或疗效 |
