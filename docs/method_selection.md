@@ -14,6 +14,10 @@
 
 Bambu 适合从已比对的长读长 BAM 中做 context-aware transcript discovery/quantification。satuRn 适合在 transcript counts 已经可靠的前提下做 DTU。两者都需要 transcript-to-gene 关系、参考版本和样本级重复；单个样本不能支持可靠的组间推断。
 
+### 跨物种单细胞
+
+SATURN (`python/06_saturn_template.py`) 用蛋白 embedding 和表达共同学习跨物种细胞空间。先核对物种、gene/protein coverage、标签一致性和 checkpoint，再比较 marker-based label transfer 等可解释基线。
+
 ## Python/模型路径
 
 CellRank 2 应该在已有邻居图、pseudotime、RNA velocity 或时间点信息后使用。先检查不同 kernel 的 terminal states 和 fate probabilities 是否稳定，再把 lineage-correlated genes 当作候选机制线索。
