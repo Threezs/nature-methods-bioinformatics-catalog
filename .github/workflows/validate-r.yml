@@ -39,4 +39,14 @@ jobs:
           result <- summarize_cell_scores(scores, metadata)
           stopifnot(nrow(result) == 4L, all(result$n_cells_used == 2L))
           cat("Sample-level summary smoke test passed\n")
+      - name: Smoke-test PPI/network baseline
+        shell: bash
+        run: |
+          Rscript - <<'RS'
+          source("R/06_protein_context_baseline.R")
+          edges <- read.delim("data/mock/protein_network.tsv", stringsAsFactors = FALSE)
+          result <- ppi_network_baseline(edges)
+          stopifnot(nrow(result) == 4L, result$protein[1] == "STAT3")
+          cat("PPI/network baseline smoke test passed\n")
+          RS
           RS
