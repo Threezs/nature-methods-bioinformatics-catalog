@@ -1,0 +1,16 @@
+name: validate-method-catalog
+on:
+  push:
+  pull_request:
+jobs:
+  python:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Validate catalog
+        run: python python/validate_manifest.py
+      - name: Compile Python templates
+        run: python -m compileall -q python
