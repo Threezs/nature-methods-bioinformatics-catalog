@@ -32,6 +32,13 @@ protein_context:
   checkpoint: models/pinnacle_checkpoint.pt
   record_network_version: true
   record_sha256: true
+spatial_data:
+  input_paths: [data/real/spatialdata.zarr]
+  expected_elements: [table, image, labels, shapes, points]
+  coordinate_system: tissue
+  record_units: true
+  record_transform_chain: true
+  platform: record_platform_and_reader_version
 reproducibility:
   save_session_info: true
   save_command_line: true
