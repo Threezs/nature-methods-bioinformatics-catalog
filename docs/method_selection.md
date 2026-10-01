@@ -18,6 +18,8 @@ Bambu 适合从已比对的长读长 BAM 中做 context-aware transcript discove
 
 CellRank 2 应该在已有 kNN 邻居图、pseudotime、RNA velocity 或时间点信息后使用。先检查不同 kernel 的 terminal states 和 fate probabilities 是否稳定，再把 lineage-correlated genes 当作候选机制线索。若要比较 APAP/IR 条件，必须保留 `sample_id`/`donor_id`，先在样本层面汇总 fate probability 或 terminal-state proportion，再做组间比较；细胞级输出不能直接当作独立重复。
 
+PHLOWER 适合有两种以上已对齐单细胞模态、且问题确实包含复杂多分支分化树的场景。它依赖共享 cell ID、模态间预处理一致性以及可解释的 root/direction；先与 CellRank、图拉普拉斯或其他轨迹 baseline 比较 branch stability，再把候选转录因子作为待验证假设。没有方向先验时，不要把无向 embedding 或 inferred branch 直接写成谱系顺序。
+
 Mellon 适合回答“高维单细胞表示中哪些状态区域稠密/稀疏、状态密度如何随时间连续变化”这类问题。先固定表示（例如 PCA 或 diffusion representation）和邻域参数，再把 density 与细胞类型、时间点和 sample/donor 对照；不要把 density 当作 lineage probability，也不要把低密度状态直接写成稀有细胞比例。
 
 scGPT、scFoundation、Nicheformer、Monod、SATURN、UCE 和 PINNACLE 都应被当作扩展分析。当前目录中的这些入口主要生成并审计 manifest，实际模型推理仍需官方包、checkpoint、GPU/配置和版本锁定。每次运行要和简单可解释 baseline（PCA/nearest-neighbor、edgeR/DESeq2、PPI/network baseline 或经典 CellRank）比较。
