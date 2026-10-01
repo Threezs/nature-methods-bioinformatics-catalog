@@ -1,0 +1,13 @@
+cff-version: 1.2.0
+message: "Please cite the original method papers listed in catalog.csv and this catalog when reusing the templates."
+title: "Nature Methods Bioinformatics Catalog"
+type: software
+abstract: "R-first, reproducible catalog of recent bioinformatics methods with turnkey templates and evidence notes."
+authors:
+  - family-names: Zhao
+    given-names: Zize
+    affiliation: "Threezs"
+repository-code: "https://github.com/Threezs/nature-methods-bioinformatics-catalog"
+license: "MIT"
+version: "0.1.0"
+date-released: "2026-10-01"
