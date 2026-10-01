@@ -15,7 +15,8 @@
 | 单细胞 embedding、扰动和药物反应 | `python/03_scFoundation_embedding_template.py` | Python | 需要 GPU/大内存时再启用 |
 | 把单细胞表达映射到空间 niche | `python/04_nicheformer_template.py` | Python | 空间转录组或 dissociated scRNA-seq；研究性方法 |
 | nascent/mature RNA 的生物物理模型 | `python/05_monod_template.py` | Python | 需要匹配的 nascent/mature count；不是常规 bulk DE 替代品 |
-| 跨物种单细胞整合和标签迁移 | `python/06_saturn_template.py` | Python | 需要多物种 AnnData、蛋白 embedding 和外部 checkpoint |\n| 零样本单细胞 embedding 和跨物种表示 | `python/07_uce_manifest.py` | Python | 需要 `.h5ad`、基因/蛋白词表和外部 checkpoint |
+| 跨物种单细胞整合和标签迁移 | `python/06_saturn_template.py` | Python | 需要多物种 AnnData、蛋白 embedding 和外部 checkpoint |
+| 零样本单细胞 embedding 和跨物种表示 | `python/07_uce_manifest.py` | Python | 需要 `.h5ad`、基因/蛋白词表和外部 checkpoint |
 
 ## 方法来源
 
@@ -28,7 +29,8 @@
 - Rosen et al. (2024), *Toward universal cell embeddings: integrating single-cell RNA-seq datasets across species with SATURN*, **Nature Methods**, DOI `10.1038/s41592-024-02191-z`; 官方代码是 [snap-stanford/SATURN](https://github.com/snap-stanford/SATURN)，复现实验归档为 [Zenodo 10.5281/zenodo.10258201](https://doi.org/10.5281/zenodo.10258201)。
 - Gilis et al. (2021), *Scalable Analysis of Differential Transcript Usage for Bulk and Single-Cell RNA-sequencing Applications*, **F1000Research**, DOI `10.12688/f1000research.51749.1`; R 包是 [statOmics/satuRn](https://github.com/statOmics/satuRn)，复现实验是 [statOmics/satuRnPaper](https://github.com/statOmics/satuRnPaper)。
 - Gorin et al. (2025), *Monod: model-based discovery and integration through fitting stochastic transcriptional dynamics to single-cell sequencing data*, **Nature Methods**, DOI `10.1038/s41592-025-02832-x`; 官方代码是 [pachterlab/monod](https://github.com/pachterlab/monod) 和 [pachterlab/monod_examples](https://github.com/pachterlab/monod_examples)。
-- Tejada-Lapuerta et al. (2025), *Nicheformer: a foundation model for single-cell and spatial omics*, **Nature Methods**, DOI `10.1038/s41592-025-02814-z`; 官方代码是 [theislab/nicheformer](https://github.com/theislab/nicheformer)。\n- Rosen et al. (2026), *Universal cell embedding provides a foundation model for cell biology*, **Nature**, DOI `10.1038/s41586-026-10689-z`; 官方代码是 [snap-stanford/UCE](https://github.com/snap-stanford/UCE)。
+- Tejada-Lapuerta et al. (2025), *Nicheformer: a foundation model for single-cell and spatial omics*, **Nature Methods**, DOI `10.1038/s41592-025-02814-z`; 官方代码是 [theislab/nicheformer](https://github.com/theislab/nicheformer)。
+- Rosen et al. (2026), *Universal cell embedding provides a foundation model for cell biology*, **Nature**, DOI `10.1038/s41586-026-10689-z`; 官方代码是 [snap-stanford/UCE](https://github.com/snap-stanford/UCE)。
 
 完整字段见 [`catalog.csv`](catalog.csv)，方法选择和限制见 [`docs/method_selection.md`](docs/method_selection.md)。
 
