@@ -22,6 +22,11 @@ foundation_models:
   record_source_url: true
   record_sha256: true
   run_gpu_only_when_requested: true
+cross_species:
+  species: [Homo_sapiens, Mus_musculus]
+  adata_paths: [data/real/human.h5ad, data/real/mouse.h5ad]
+  protein_embeddings_dir: models/protein_embeddings
+  method: SATURN
 reproducibility:
   save_session_info: true
   save_command_line: true
