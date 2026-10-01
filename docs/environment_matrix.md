@@ -8,6 +8,7 @@
 | 变换和透明 feature ranking | R + base；正式 HVG 加 scran/scuttle | CPU | raw count、batch | baseline-function |
 | Bambu | R + Bioconductor bambu | 依 BAM 大小而定 | genome-aligned BAM、GTF、FASTA | 需要参考文件 |
 | satuRn | R + Bioconductor satuRn、limma、SummarizedExperiment | CPU/多核 | transcript counts、tx2gene、重复样本 | 需要 transcript 输入 |
+| PPI/network baseline | R base | CPU、内存低 | PPI edge table，可选权重 | 可直接 smoke test |
 | CellRank 2 | Python + scanpy + cellrank + scvelo（若用 velocity） | CPU 可运行；大数据建议更多内存 | h5ad、neighbors、pseudotime 或 Ms/velocity layers | runtime-required |
 | Mellon | 官方 Python Mellon 环境 | CPU/GPU 取决于 representation 和细胞数 | 高维 cell representation、可选时间 metadata | 当前只生成 manifest |
 | scGPT/scFoundation | 官方 Python 环境 | 通常需要 GPU/大内存 | h5ad/counts、checkpoint | 当前只生成 manifest |
