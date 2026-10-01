@@ -54,6 +54,10 @@ def main() -> None:
             raise SystemExit(f"missing utility entrypoint: {row['entrypoint']}")
     function_rows = read_csv(ROOT / "data/function_index.csv")
     known_ids = set(ids) | {row["id"] for row in utility_rows}
+    function_ids = {row["method_id"] for row in function_rows}
+    missing_function_rows = set(ids) - function_ids
+    if missing_function_rows:
+        raise SystemExit(f"paper method missing from function_index.csv: {sorted(missing_function_rows)}")
     for row in function_rows:
         if row["method_id"] not in known_ids:
             raise SystemExit(f"unknown method in function_index.csv: {row['method_id']}")
@@ -61,6 +65,10 @@ def main() -> None:
     decision_required = {"method_id", "question", "experimental_unit", "baseline", "compute_profile", "minimum_evidence", "not_for"}
     if not decision_rows or not decision_required.issubset(decision_rows[0]):
         raise SystemExit("method_decision_matrix.csv is missing required columns")
+    decision_ids = {row["method_id"] for row in decision_rows}
+    missing_decision_rows = set(ids) - decision_ids
+    if missing_decision_rows:
+        raise SystemExit(f"paper method missing from method_decision_matrix.csv: {sorted(missing_decision_rows)}")
     for row in decision_rows:
         if row["method_id"] not in set(ids):
             raise SystemExit(f"unknown method in decision matrix: {row['method_id']}")
