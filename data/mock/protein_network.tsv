@@ -1,0 +1,5 @@
+protein_a	protein_b	weight
+STAT3	JAK1	0.92
+STAT3	JAK2	0.87
+JAK1	IL6R	0.74
+JAK2	IL6R	0.71
