@@ -15,6 +15,7 @@
 | 单细胞 embedding、扰动和药物反应 | `python/03_scFoundation_embedding_template.py` | Python | 需要 GPU/大内存时再启用 |
 | 把单细胞表达映射到空间 niche | `python/04_nicheformer_template.py` | Python | 空间转录组或 dissociated scRNA-seq；研究性方法 |
 | nascent/mature RNA 的生物物理模型 | `python/05_monod_template.py` | Python | 需要匹配的 nascent/mature count；不是常规 bulk DE 替代品 |
+| 跨物种单细胞整合和标签迁移 | `python/06_saturn_template.py` | Python | 需要多物种 AnnData、蛋白 embedding 和外部 checkpoint |
 
 ## 方法来源
 
@@ -24,7 +25,7 @@
 - Hao et al. (2024), *Large-scale foundation model on single-cell transcriptomics*, **Nature Methods**, DOI `10.1038/s41592-024-02305-7`; 官方代码是 [biomap-research/scFoundation](https://github.com/biomap-research/scFoundation)。
 - Zappia et al. (2025), *Feature selection methods affect the performance of scRNA-seq data integration and querying*, **Nature Methods**, DOI `10.1038/s41592-025-02624-3`, PMID `40082610`; 复现实验仓库见 [atlas-feature-selection-benchmark_single_cell_RNA-seq](https://github.com/truong128/atlas-feature-selection-benchmark_single_cell_RNA-seq)。
 - Chen et al. (2023), *Context-aware transcript quantification from long-read RNA-seq data with Bambu*, **Nature Methods**, DOI `10.1038/s41592-023-01908-w`; 官方代码是 [GoekeLab/bambu](https://github.com/GoekeLab/bambu)。
-- Gilis et al. (2021), *Scalable Analysis of Differential Transcript Usage for Bulk and Single-Cell RNA-sequencing Applications*, DOI `10.12688/f1000research.51749.1`; R/Bioconductor 包是 [statOmics/satuRn](https://github.com/statOmics/satuRn)。
+- Rosen et al. (2024), *Toward universal cell embeddings: integrating single-cell RNA-seq datasets across species with SATURN*, **Nature Methods**, DOI `10.1038/s41592-024-02191-z`; 官方代码是 [snap-stanford/SATURN](https://github.com/snap-stanford/SATURN)，复现实验归档为 [Zenodo 10.5281/zenodo.10258201](https://doi.org/10.5281/zenodo.10258201)。
 - Gorin et al. (2025), *Monod: model-based discovery and integration through fitting stochastic transcriptional dynamics to single-cell sequencing data*, **Nature Methods**, DOI `10.1038/s41592-025-02832-x`; 官方代码是 [pachterlab/monod](https://github.com/pachterlab/monod) 和 [pachterlab/monod_examples](https://github.com/pachterlab/monod_examples)。
 - Tejada-Lapuerta et al. (2025), *Nicheformer: a foundation model for single-cell and spatial omics*, **Nature Methods**, DOI `10.1038/s41592-025-02814-z`; 官方代码是 [theislab/nicheformer](https://github.com/theislab/nicheformer)。
 
@@ -45,4 +46,3 @@
 - [bioinformatics-literature-workbench](https://github.com/Threezs/bioinformatics-literature-workbench)：论文、claim、数据集和阅读笔记。
 - [research-evidence-notebook](https://github.com/Threezs/research-evidence-notebook)：把论文证据和机制假设分层保存。
 - [research-project-index](https://github.com/Threezs/research-project-index)：全部仓库和项目状态入口。
-
