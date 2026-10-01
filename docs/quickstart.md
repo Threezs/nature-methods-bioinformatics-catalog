@@ -39,7 +39,7 @@ writeLines(capture.output(sessionInfo()), "logs/R_sessionInfo.txt")
 
 ## 3. Python 路径
 
-适合 CellRank 2、Mellon、foundation model、Nicheformer、MISO、SCMMIB、Monod、SATURN 和 UCE。先创建隔离环境，再记录 Python、包版本和 checkpoint。
+适合 CellRank 2、Mellon、foundation model、Nicheformer、MISO、SCMMIB、scMultiBench、NaRMBench、Monod、SATURN 和 UCE。先创建隔离环境，再记录 Python、包版本和 checkpoint。
 
 ```bash
 python -m venv .venv
@@ -51,11 +51,13 @@ python python/07_uce_manifest.py --input-h5ad data/processed/your_dataset.h5ad -
 python python/09_mellon_template.py --embedding results/pca_embedding.csv --metadata config/cell_metadata.csv --output results/mellon_manifest.json
 python python/10_miso_manifest.py --omics data/processed/spatial_rna.csv data/processed/spatial_atac.csv --spot-metadata config/spot_metadata.csv --output results/miso_manifest.json
 python python/11_scmmib_manifest.py --dataset-manifest templates/multimodal_dataset_manifest.csv --task paired --output results/scmmib_manifest.json
+python python/12_scmultibench_manifest.py --dataset-manifest templates/multimodal_dataset_manifest.csv --tasks dimension_reduction clustering --output results/scmultibench_manifest.json
+python python/13_narmbench_manifest.py --reads data/mock/narmbench_reads.fastq --reference data/mock/narmbench_reference.fa --chemistry both --output results/narmbench_manifest.json
 python python/08_sample_level_summary.py --scores results/cellrank2/fate_probabilities.csv --metadata config/cell_metadata.csv --output results/cellrank2/fate_sample_level.csv
 python -m pip freeze > logs/python_freeze.txt
 ```
 
-foundation model、Mellon、MISO、SCMMIB、SATURN 和 Monod 的 manifest 脚本不会偷偷下载权重，也不会自动启动训练；它们只核对输入并写出可审计的下一步。这样可以避免把大文件、不可复现的网络下载和未经核对的模型许可混进主分析。需要真实推理或 benchmark 时，按 `catalog.csv` 的 `execution_mode` 安装官方包并保留运行日志。
+foundation model、Mellon、MISO、SCMMIB、scMultiBench、NaRMBench、SATURN 和 Monod 的 manifest 脚本不会偷偷下载权重，也不会自动启动训练；它们只核对输入并写出可审计的下一步。这样可以避免把大文件、不可复现的网络下载和未经核对的模型许可混进主分析。需要真实推理或 benchmark 时，按 `catalog.csv` 的 `execution_mode` 安装官方包并保留运行日志。
 
 ## 4. 换成真实数据前必须填的字段
 
@@ -73,7 +75,7 @@ foundation model、Mellon、MISO、SCMMIB、SATURN 和 Monod 的 manifest 脚本
 - **smoke-tested：** 输入审计、mock CSV、manifest 和 CLI 参数检查都通过。
 - **baseline-function：** R 函数可以在本地 R/Bioconductor 环境执行，且输出表符合预期。
 - **integration-required：** Bambu、satuRn 和 CellRank 需要真实格式的输入，不能用当前两个 mock CSV 代替。
-- **manifest-only：** scGPT、scFoundation、Mellon、Nicheformer、MISO、SCMMIB、Monod、SATURN 和 UCE 当前只生成配置/审计文件，官方推理或 benchmark 步骤要在固定环境中继续完成。
+- **manifest-only：** scGPT、scFoundation、Mellon、Nicheformer、MISO、SCMMIB、scMultiBench、NaRMBench、Monod、SATURN 和 UCE 当前只生成配置/审计文件，官方推理或 benchmark 步骤要在固定环境中继续完成。
 
 ## 6. 结果解释的最低要求
 

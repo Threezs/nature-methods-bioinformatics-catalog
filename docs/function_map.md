@@ -16,11 +16,13 @@
 | 空间 niche 和组织环境 | 空间转录组或带空间上下文的单细胞数据 | `python/04_nicheformer_template.py` | 传统邻域统计、空间配体-受体分析 | niche embedding、context prediction | 域偏移明显或没有空间验证时只能作为探索结果 |
 | 多模态空间组学整合 | 共享 spot/cell key 的多种空间组学和图像特征 | `python/10_miso_manifest.py` | MISO 与传统 modality-specific clustering | multimodal embedding、spatial clusters | 模态未对齐、坐标约定不一致或旧环境无法固定时不要运行 |
 | 选择多模态整合器 | paired、unpaired 或 mosaic 数据集清单 | `python/11_scmmib_manifest.py` | SCMMIB benchmark | accuracy、robustness、scalability | benchmark 排名依赖任务和模态，不能直接视为普适排名 |
+| 多任务多模态整合评估 | 数据集清单和一个或多个任务 | `python/12_scmultibench_manifest.py` | scMultiBench | reduction、batch、clustering、classification、imputation、feature selection、spatial registration 指标 | 任务、模态、数据集和 split 不同，不能只引用一个总排名 |
 | nascent/mature 转录动力学 | nascent 与 mature count 矩阵、官方 config | `python/05_monod_template.py` | 先做数据匹配和模型比较；当前入口只生成 manifest | kinetic parameters、uncertainty（由官方包产生） | 不能当作常规 bulk DE 或普通 RNA velocity 的直接替代 |
 | 跨物种整合和标签迁移 | 多物种 AnnData、蛋白 embedding | `python/06_saturn_template.py` | UCE；先做 ortholog/QC 审计 | universal embedding、跨物种标签 | 基因同源关系和蛋白覆盖率没有记录时不要解释跨物种差异 |
 | 零样本跨物种 embedding | AnnData、UCE checkpoint、基因/蛋白词表 | `python/07_uce_manifest.py` | SATURN、经典 reference mapping | zero-shot embedding、annotation transfer | checkpoint、词表覆盖和物种元数据缺失时不能复现 |
 | 长读长转录本发现和定量 | BAM、GTF、genome FASTA | `R/03_bambu_long_read.R` | 记录参考版本和比对参数 | novel/known transcript counts | BAM、GTF 和 genome 不匹配时不要运行 |
 | transcript usage / DTU | transcript counts、transcript-to-gene、重复样本 | `R/04_satuRn_dtu.R` | 基因层面 DE 作为并行分析 | DTU FDR、usage plot | 单个样本或每个基因只有一个 isoform 时不支持可靠 DTU |
+| nanopore RNA 修饰检测 | direct-RNA reads、reference、chemistry | `python/13_narmbench_manifest.py` | NaRMBench 的 preprocessing/retraining/evaluation | site-level detection、PR、quantification、biological validity | RNA002/RNA004、训练数据和非 m6A 修饰的校准不能混为一谈 |
 
 ## 推荐的决策顺序
 

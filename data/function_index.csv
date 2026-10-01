@@ -17,3 +17,5 @@ SATURN_RN_DTU_2021,transcriptomics,transcript usage / DTU,R,transcript counts + 
 MELLON_2024,state_density,cell-state density and temporal interpolation,Python,cell representation + optional time metadata,embedding/metadata,cell-state density and gene-change scores,2,manifest-only
 MISO_2025,spatial_context,multimodal spatial omics integration,Python,aligned omics + optional image features,spot-level modalities,multimodal embedding and spatial clusters,2,manifest-only
 SCMMIB_2025,integration_benchmark,multimodal integration benchmarking,Python,dataset manifest + task label,paired/unpaired/mosaic modality inputs,accuracy robustness and scalability metrics,2,manifest-only
+SCMULTIBENCH_2025,integration_benchmark,multitask multimodal integration benchmarking,Python,dataset manifest + selected tasks,paired/unpaired/mosaic/cross modality inputs,task-specific integration metrics,2,manifest-only
+NARMBENCH_2026,rna_modification,nanopore RNA modification tool evaluation,Python,nanopore reads + reference + chemistry,FASTQ/reference/labels,site-level detection and calibration metrics,2,manifest-only

@@ -24,6 +24,10 @@ scGPT、scFoundation、Nicheformer、Monod、SATURN 和 UCE 都应被当作扩�
 
 MISO 和 SCMMIB 面向多模态场景。MISO 的第一步不是下载权重，而是确认所有模态共享 spot/cell key、坐标系和预处理版本；SCMMIB 用来按 paired/unpaired/mosaic 任务记录 accuracy、robustness、scalability，而不是替代一个具体整合器。MISO 当前官方仓库要求 Python 3.7 和 Git-LFS，因此目录只生成 manifest，不把旧环境伪装成已复现。
 
+scMultiBench 是 SCMMIB 的互补路线：它把 dimension reduction、batch correction、clustering、classification、imputation、feature selection 和 spatial registration 分开评估，并区分 vertical/diagonal/mosaic/cross 结构。使用时先选定任务和 split，再报告任务级指标，不能把多个任务压成一个“最佳方法”。
+
+NaRMBench 放在长读长 RNA 专题，而不是常规转录本定量路径。它用于比较 nanopore direct-RNA 修饰检测工具和 retraining 方案；RNA002/RNA004 chemistry、ground truth、重训练样本和 site-level calibration 都必须记录。结果只能支持“检测工具在该 chemistry/数据条件下的表现”，不能直接写成全转录组修饰机制。
+
 ## 适合 APAP/IR/CRLM 项目的组合
 
 1. bulk RNA-seq：沿用 `rnaseq-analysis-template` 的 edgeR QL 主分析；这些近期方法主要作为单细胞、转录本和解释层补充。

@@ -17,6 +17,8 @@ smoke-method-manifests:
 	python python/09_mellon_template.py --embedding data/mock/cell_embedding.csv --metadata data/mock/scrna_metadata.csv --output /tmp/nm_mellon_manifest.json
 	python python/10_miso_manifest.py --omics data/mock/scrna_counts.csv data/mock/cell_scores.csv --image-features data/mock/cell_embedding.csv --spot-metadata data/mock/scrna_metadata.csv --output /tmp/nm_miso_manifest.json
 	python python/11_scmmib_manifest.py --dataset-manifest data/mock/multimodal_dataset_manifest.csv --task paired --output /tmp/nm_scmmib_manifest.json
+	python python/12_scmultibench_manifest.py --dataset-manifest data/mock/multimodal_dataset_manifest.csv --tasks dimension_reduction clustering --output /tmp/nm_scmultibench_manifest.json
+	python python/13_narmbench_manifest.py --reads data/mock/narmbench_reads.fastq --reference data/mock/narmbench_reference.fa --output /tmp/nm_narmbench_manifest.json
 
 compile-python:
 	python -m compileall -q python

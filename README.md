@@ -26,11 +26,13 @@
 | 空间组织环境和 niche | `python/04_nicheformer_template.py` | Python | 空间或上下文单细胞数据 | niche embedding、context prediction | 探索/支持分析 |
 | 多模态空间组学整合 | `python/10_miso_manifest.py` | Python | 对齐的空间组学模态，可选图像特征 | multimodal embedding、spatial clusters | 探索分析 |
 | 比较多模态整合器 | `python/11_scmmib_manifest.py` | Python | 数据集 manifest、paired/unpaired/mosaic 任务 | accuracy、robustness、scalability | 评估工具 |
+| 多任务多模态整合评估 | `python/12_scmultibench_manifest.py` | Python | 数据集 manifest、任务列表 | reduction/batch/clustering 等任务指标 | 评估工具 |
 | nascent/mature 转录动力学 | `python/05_monod_template.py` | Python | nascent 和 mature counts | kinetic parameters、模型不确定性 | 专题分析 |
 | 多物种整合和标签迁移 | `python/06_saturn_template.py` | Python | 多物种 AnnData、蛋白 embedding | 跨物种 embedding、标签迁移 | 探索分析 |
 | 零样本细胞 embedding | `python/07_uce_manifest.py` | Python | AnnData、UCE checkpoint | zero-shot embedding manifest | 探索分析 |
 | 长读长新转录本发现 | `R/03_bambu_long_read.R` | R | BAM、GTF、genome FASTA | novel/known transcript counts | 主分析候选 |
 | transcript usage / DTU | `R/04_satuRn_dtu.R` | R | transcript counts、注释、重复样本 | DTU FDR、usage 结果 | 主/支持分析 |
+| nanopore RNA 修饰检测评估 | `python/13_narmbench_manifest.py` | Python | nanopore reads、reference、chemistry | site-level detection、PR、定量审计 | 专题分析 |
 
 完整的输入、限制、方法 ID 和官方代码见 [`catalog.csv`](catalog.csv)；功能机器可读规则见 [`config/function_taxonomy.yml`](config/function_taxonomy.yml)；通用模板见 [`data/utility_templates.csv`](data/utility_templates.csv)。
 
@@ -83,7 +85,7 @@ R 入口是可复用函数，示例见各脚本末尾和 [`docs/quickstart.md`](
 
 ## 近期方法范围
 
-目录目前收录 14 个论文/评估条目和 4 个通用 R/Python 工具模板，覆盖 2021–2026 年的单细胞变换、feature selection、命运推断、cell-state density、foundation model、多模态空间组学、整合 benchmark、跨物种整合、长读长和 DTU。新增的 Nature Methods 条目包括 Mellon、MISO 和 SCMMIB；它们目前都先生成可审计 manifest，实际模型/benchmark 运行仍需官方环境。
+目录目前收录 16 个论文/评估条目和 4 个通用 R/Python 工具模板，覆盖 2021–2026 年的单细胞变换、feature selection、命运推断、cell-state density、foundation model、多模态空间组学、整合 benchmark、跨物种整合、长读长、DTU 和 nanopore RNA 修饰。新增的 Nature Methods 条目包括 Mellon、MISO、SCMMIB、scMultiBench 和 NaRMBench；它们目前都先生成可审计 manifest，实际模型/benchmark 运行仍需官方环境。
 
 ## 相关仓库
 

@@ -14,6 +14,8 @@
 | Nicheformer | 官方 Python 环境 | GPU 推荐 | spatial/context AnnData、checkpoint | 当前只生成 manifest |
 | MISO | 官方仓库 Python 3.7 环境；Git-LFS | 小于万 spot 的训练可先 CPU/GPU 试跑；图像特征提取更重 | 多模态空间数据、对齐图像特征、ViT 权重 | 当前只生成 manifest |
 | SCMMIB | 官方 benchmark/pipeline 环境 | 依任务规模而定，需记录 CPU/GPU/内存 | paired/unpaired/mosaic 数据集和任务清单 | 当前只生成 manifest |
+| scMultiBench | 官方 scMultiBench 环境 | 多任务 benchmark 需记录 CPU/GPU/内存和 split | multimodal datasets、任务清单和评估配置 | 当前只生成 manifest |
+| NaRMBench | 官方 nanopore/修饰工具环境 | basecalling/alignment/retraining 可能需要 GPU、大磁盘和长运行时间 | direct-RNA reads、reference、RNA002/RNA004、ground truth | 当前只生成 manifest |
 | Monod | 官方 monod + monod_examples 环境 | CPU/GPU 取决于拟合规模 | nascent/mature 数据、官方 config | 当前只生成 manifest |
 | SATURN | 官方 SATURN 环境 | GPU、较大内存 | 多物种 AnnData、protein embeddings | 当前只生成 manifest |
 | UCE | 官方 UCE 环境 | GPU 推荐 | AnnData、checkpoint、gene/protein vocabulary | 当前只生成 manifest |

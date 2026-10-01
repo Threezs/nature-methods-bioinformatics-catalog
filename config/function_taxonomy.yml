@@ -34,7 +34,11 @@ categories:
   - id: integration_benchmark
     label: 多模态整合方法评估
     stage: 2
-    methods: [SCMMIB_2025]
+    methods: [SCMMIB_2025, SCMULTIBENCH_2025]
+  - id: rna_modification
+    label: nanopore RNA 修饰检测与评估
+    stage: 2
+    methods: [NARMBENCH_2026]
   - id: transcription_dynamics
     label: nascent/mature 转录动力学
     stage: 2
