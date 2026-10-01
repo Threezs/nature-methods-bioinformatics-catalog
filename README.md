@@ -9,6 +9,7 @@
 3. [`docs/project_layout.md`](docs/project_layout.md)：把方法模板接入 APAP、IR、CRLM 等真实科研项目的目录和证据结构。
 4. [`docs/sample_level_reporting.md`](docs/sample_level_reporting.md)：把 CellRank、embedding 和 niche 的细胞级输出汇总回 sample/donor 实验单位。
 5. [`templates/method_run_manifest.yml`](templates/method_run_manifest.yml)：每次运行要固定的输入、版本、checkpoint、baseline 和限制。
+6. [`docs/environment_matrix.md`](docs/environment_matrix.md)：R、Python、GPU、参考文件和 checkpoint 的环境分层。
 
 ## 功能导航
 
