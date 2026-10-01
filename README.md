@@ -24,6 +24,7 @@
 | 细胞状态密度和时间连续化 | `python/09_mellon_template.py` | Python | 高维 cell representation，可选时间/样本 metadata | cell-state density、gene-change score、时间插值 | 探索/支持分析 |
 | 预训练模型做 embedding/注释 | `python/02_scgpt_embedding_template.py` | Python | `.h5ad`、checkpoint | embedding、注释或扰动预测 manifest | 探索分析 |
 | 大规模单细胞表示或药物反应 | `python/03_scFoundation_embedding_template.py` | Python | `.h5ad`、checkpoint、GPU | embedding、任务预测审计 | 探索分析 |
+| 细胞/组织上下文驱动的蛋白表示和靶点优先级 | `python/14_pinnacle_manifest.py` | Python | 单细胞表达、PPI 网络、cell-type/tissue metadata | context-aware protein/cell representation、target/drug prioritization manifest | 探索分析 |
 | 空间组织环境和 niche | `python/04_nicheformer_template.py` | Python | 空间或上下文单细胞数据 | niche embedding、context prediction | 探索/支持分析 |
 | 多模态空间组学整合 | `python/10_miso_manifest.py` | Python | 对齐的空间组学模态，可选图像特征 | multimodal embedding、spatial clusters | 探索分析 |
 | 比较多模态整合器 | `python/11_scmmib_manifest.py` | Python | 数据集 manifest、paired/unpaired/mosaic 任务 | accuracy、robustness、scalability | 评估工具 |
@@ -81,13 +82,21 @@ python python/07_uce_manifest.py \
   --input-h5ad data/real/your_dataset.h5ad \
   --checkpoint models/uce_checkpoint.pt \
   --output results/uce_manifest.json
+
+# Python：PINNACLE 只生成可审计 manifest，不自动下载网络或权重
+python python/14_pinnacle_manifest.py \
+  --expression data/real/your_dataset.h5ad \
+  --ppi-network data/real/protein_network.tsv \
+  --context-metadata data/real/context_metadata.csv \
+  --task target_prioritization \
+  --output results/pinnacle_manifest.json
 ```
 
 R 入口是可复用函数，示例见各脚本末尾和 [`docs/quickstart.md`](docs/quickstart.md)。细胞级方法的条件比较请先阅读 [`docs/sample_level_reporting.md`](docs/sample_level_reporting.md)。
 
 ## 近期方法范围
 
-目录目前收录 16 个论文/评估条目和 4 个通用 R/Python 工具模板，覆盖 2021–2026 年的单细胞变换、feature selection、命运推断、cell-state density、foundation model、多模态空间组学、整合 benchmark、跨物种整合、长读长、DTU 和 nanopore RNA 修饰。新增的 Nature Methods 条目包括 Mellon、MISO、SCMMIB、scMultiBench 和 NaRMBench；它们目前都先生成可审计 manifest，实际模型/benchmark 运行仍需官方环境。
+目录目前收录 17 个论文/评估条目和 4 个通用 R/Python 工具模板，覆盖 2021–2026 年的单细胞变换、feature selection、命运推断、cell-state density、foundation model、蛋白上下文、多模态空间组学、整合 benchmark、跨物种整合、长读长、DTU 和 nanopore RNA 修饰。新增的 Nature Methods 条目包括 Mellon、MISO、SCMMIB、scMultiBench、NaRMBench 和 PINNACLE；它们目前都先生成可审计 manifest，实际模型/benchmark 运行仍需官方环境。
 
 ## 相关仓库
 
