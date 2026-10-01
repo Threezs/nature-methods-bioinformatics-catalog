@@ -13,7 +13,7 @@ categories:
   - id: trajectory
     label: 轨迹、命运与状态转移
     stage: 2
-    methods: [CELLRANK2_2024, MONOD_2025]
+    methods: [CELLRANK2_2024]
   - id: foundation_models
     label: foundation model、embedding 与预测
     stage: 2
@@ -22,6 +22,10 @@ categories:
     label: 空间环境与 niche
     stage: 2
     methods: [NICHEFORMER_2025]
+  - id: transcription_dynamics
+    label: nascent/mature 转录动力学
+    stage: 2
+    methods: [MONOD_2025]
   - id: transcriptomics
     label: 长读长、转录本和 DTU
     stage: 1
