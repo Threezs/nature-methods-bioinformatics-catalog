@@ -30,7 +30,7 @@ categories:
   - id: protein_context
     label: 单细胞蛋白上下文与靶点优先级
     stage: 2
-    methods: [PINNACLE_2024]
+    methods: [PINNACLE_2024, UTILITY_PPI_CONTEXT_BASELINE_R]
   - id: spatial_context
     label: 空间环境与 niche
     stage: 2
