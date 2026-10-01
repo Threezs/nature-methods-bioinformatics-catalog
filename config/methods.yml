@@ -1,0 +1,29 @@
+project: nature-methods-bioinformatics-catalog
+language_priority: R
+species: Mus musculus
+count_convention: raw_integer_counts
+single_cell:
+  input_h5ad: data/real/your_dataset.h5ad
+  batch_key: batch
+  sample_key: sample_id
+  condition_key: condition
+  feature_selection:
+    default: highly_variable_genes
+    n_top_genes: 2000
+    batch_aware: true
+bulk_or_long_read:
+  genome_build: mm10
+  annotation_release: GENCODE_mouse_release_to_record
+  bam_dir: data/real/bam
+  gtf: data/real/annotation.gtf
+  genome_fasta: data/real/genome.fa
+foundation_models:
+  checkpoints_dir: models/
+  record_source_url: true
+  record_sha256: true
+  run_gpu_only_when_requested: true
+reproducibility:
+  save_session_info: true
+  save_command_line: true
+  save_input_hashes: true
+  save_full_results: true
