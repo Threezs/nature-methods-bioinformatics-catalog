@@ -1,0 +1,9 @@
+cell_id,cell_type,tissue,organism
+C01,hepatocyte,liver,Mus musculus
+C02,hepatocyte,liver,Mus musculus
+C03,macrophage,liver,Mus musculus
+C04,macrophage,liver,Mus musculus
+A01,hepatocyte,liver,Mus musculus
+A02,hepatocyte,liver,Mus musculus
+A03,macrophage,liver,Mus musculus
+A04,macrophage,liver,Mus musculus
