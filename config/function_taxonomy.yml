@@ -6,6 +6,11 @@ categories:
     stage: 0
     methods: [UTILITY_INPUT_AUDIT_R, UTILITY_INPUT_AUDIT_PY]
     required_before: [all_other_categories]
+  - id: sample_level_reporting
+    label: 细胞级结果回到 sample/donor
+    stage: 3
+    methods: [UTILITY_SAMPLE_SUMMARY_R, UTILITY_SAMPLE_SUMMARY_PY]
+    required_before: [condition_comparison]
   - id: preprocessing
     label: 单细胞预处理与表达几何
     stage: 1
