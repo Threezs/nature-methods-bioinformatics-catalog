@@ -16,7 +16,7 @@ Bambu 适合从已比对的长读长 BAM 中做 context-aware transcript discove
 
 ### 跨物种单细胞
 
-SATURN (`python/06_saturn_template.py`) 用蛋白 embedding 和表达共同学习跨物种细胞空间。先核对物种、gene/protein coverage、标签一致性和 checkpoint，再比较 marker-based label transfer 等可解释基线。
+SATURN (`python/06_saturn_template.py`) 用蛋白 embedding 和表达共同学习跨物种细胞空间。先核对物种、gene/protein coverage、标签一致性和 checkpoint，再比较 marker-based label transfer 等可解释基线。\n\nUCE (`python/07_uce_manifest.py`) 提供零样本的单细胞表示，可用于新物种或新组织的 embedding 和标签迁移。把它当作外部表示分支，保留原始表达和可解释 baseline，并记录 checkpoint、词表覆盖和物种元数据。
 
 ## Python/模型路径
 
