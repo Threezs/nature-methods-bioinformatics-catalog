@@ -7,6 +7,8 @@
 1. [`docs/function_map.md`](docs/function_map.md)：按问题选择方法，例如预处理、轨迹、空间 niche、跨物种、长读长和 DTU。
 2. [`docs/quickstart.md`](docs/quickstart.md)：从输入审计、环境记录到最小运行的完整步骤。
 3. [`docs/project_layout.md`](docs/project_layout.md)：把方法模板接入 APAP、IR、CRLM 等真实科研项目的目录和证据结构。
+4. [`docs/sample_level_reporting.md`](docs/sample_level_reporting.md)：把 CellRank、embedding 和 niche 的细胞级输出汇总回 sample/donor 实验单位。
+5. [`templates/method_run_manifest.yml`](templates/method_run_manifest.yml)：每次运行要固定的输入、版本、checkpoint、baseline 和限制。
 
 ## 功能导航
 
@@ -72,7 +74,7 @@ python python/07_uce_manifest.py \
   --output results/uce_manifest.json
 ```
 
-R 入口是可复用函数，示例见各脚本末尾和 [`docs/quickstart.md`](docs/quickstart.md)。
+R 入口是可复用函数，示例见各脚本末尾和 [`docs/quickstart.md`](docs/quickstart.md)。细胞级方法的条件比较请先阅读 [`docs/sample_level_reporting.md`](docs/sample_level_reporting.md)。
 
 ## 近期方法范围
 

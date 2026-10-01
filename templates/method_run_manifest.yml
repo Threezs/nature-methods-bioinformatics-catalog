@@ -1,0 +1,32 @@
+project_id: fill_me
+research_question: fill_me
+method_id: fill_me
+functional_category: input_audit_or_preprocessing_or_trajectory_or_foundation_models
+execution_mode: baseline-function_or_runtime-required_or_manifest-only_or_integration-required
+species: Mus musculus
+assay: single_cell_RNA_seq
+experimental_unit: sample_or_donor
+condition_key: condition
+sample_key: sample_id
+batch_key: batch
+input_paths: []
+reference:
+  genome_build: fill_me
+  annotation_release: fill_me
+  gene_id_rule: fill_me
+checkpoint:
+  required: false
+  source_url: fill_me
+  version: fill_me
+  sha256: fill_me
+software:
+  language: R_or_Python
+  version: fill_me
+  packages: []
+parameters: {}
+random_seed: 1
+baseline: fill_me
+outputs: []
+sample_level_summary: required_for_condition_comparison
+validation_status: pending
+limitations: []
