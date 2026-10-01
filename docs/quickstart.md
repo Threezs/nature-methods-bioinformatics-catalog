@@ -21,7 +21,7 @@ my-project/
 
 ## 2. R 路径
 
-适合表达变换、feature selection、Bambu 和 satuRn。先安装与项目匹配的 R/Bioconductor 版本，并把 `sessionInfo()` 写入日志。
+适合表达变换、feature selection、Bambu、satuRn 和 PINNACLE 的可解释 PPI/network baseline。先安装与项目匹配的 R/Bioconductor 版本，并把 `sessionInfo()` 写入日志。
 
 ```r
 source("R/00_input_audit.R")
@@ -33,6 +33,14 @@ audit_metadata(metadata, expected_n = ncol(counts), id_column = "cell_id", expec
 panel <- run_transformation_panel(counts)
 saveRDS(panel, "results/transformation_panel.rds")
 writeLines(capture.output(sessionInfo()), "logs/R_sessionInfo.txt")
+```
+
+PINNACLE 的 R-first 参照可以直接使用 base R：
+
+```r
+source("R/06_protein_context_baseline.R")
+edges <- read.delim("data/mock/protein_network.tsv", stringsAsFactors = FALSE)
+write_ppi_network_baseline(edges, "results/ppi_network_baseline.csv")
 ```
 
 说明：`R/01` 的 Pearson residuals 是透明的 Poisson 基线实现，用来比较几何变化，不声称替代所有专用残差模型。正式论文要报告具体变换、过滤和缩放规则。
