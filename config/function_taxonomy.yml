@@ -51,6 +51,10 @@ categories:
     label: 空间 foundation model、域推断和组织架构
     stage: 2
     methods: [NOVAE_2025]
+  - id: data_simulation
+    label: 多模态、空间和速度数据模拟
+    stage: 1
+    methods: [SCMULTISIM_2025]
   - id: bioinformatics_toolkit
     label: 通用序列、表格、距离和系统发育工具
     stage: 1
@@ -94,6 +98,8 @@ selection_rules:
     require: SACCELERATOR_2026_metric_and_expert_review
   - if: spatial_domain_or_architecture_inference
     require: SPATIALDATA_2025_coordinate_and_element_audit_and_NOVAE_2025_checkpoint_manifest
+  - if: method_benchmark_without_ground_truth
+    prefer: SCMULTISIM_2025_simulation_with_declared_tree_GRN_and_noise
   - if: long_read_bam_available
     prefer: BAMBU_2023
   - if: transcript_counts_with_replicates

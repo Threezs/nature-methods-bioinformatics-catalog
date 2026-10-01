@@ -24,5 +24,6 @@
 | 序列、距离、多样性、分类或系统发育 | operation + format + metadata audit | scikit-bio；再按 assay 选择统计检验和样本级设计 |
 | 空间域聚类稳定性和方法分歧 | dataset/method/coordinate/metric/expert-review audit | SACCELERATOR；同时报告非空间和空间指标，再做专家与实验验证 |
 | 空间 foundation model 域推断和组织架构 | element/coordinate/panel/batch/checkpoint/section-split audit | Novae；与邻域聚类、marker/图像标注和 held-out section 比较 |
+| 模拟真值下的方法压力测试 | tree/GRN/modality/interaction/noise/seed/split audit | scMultiSim；先做参数敏感性和经验 sanity check，再把结果带入真实数据验证 |
 
 矩阵只用于形成可审计的候选方案；最终结果仍需项目自己的样本量、重复、外部验证和实验设计支持。

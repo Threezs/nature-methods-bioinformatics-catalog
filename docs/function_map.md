@@ -22,6 +22,7 @@
 | 通用序列/表格/距离/多样性/系统发育工具 | FASTA/FASTQ、BIOM/TSV、metadata、distance matrix 或 Newick | `python/17_scikit_bio_manifest.py` | assay-specific parser、统计 baseline 和样本级设计 | 格式感知对象、距离/多样性/分类/系统发育输出 | 不要把通用算法默认成实验设计或生物机制；先固定输入格式和 metadata |
 | 空间域聚类和方法共识 | 多平台空间数据、聚类输出、坐标、方法配置、可选 expert labels | `python/18_saccelerator_manifest.py` | 平台原生聚类、ARI/NMI 与 CHAOS/PAS/entropy 并行比较 | 跨数据集指标、共识聚类、方法分歧和专家复核区域 | 手工标签不自动是真值；不能把共识或高分直接写成组织机制 |
 | 空间 foundation model、域和组织架构 | 空间转录组/AnnData、可选 gene panel、checkpoint 和批次信息 | `python/19_novae_manifest.py` | 空间邻域/domain baseline、held-out section、marker/图像验证 | spot/cell domain、SVG/pathway、批次校正表示和组织架构摘要 | 没有 registration、panel coverage、batch split 或正交 marker 验证时不要写成稳定组织机制 |
+| 多模态、空间和速度数据模拟 | cell differential tree、GRN、可选空间交互和 batch 参数 | `python/20_scmultisim_manifest.py` | 负/正模拟、经验 sanity check 和固定 benchmark split | paired RNA/ATAC、spliced/unspliced、空间位置及已知 truth | 模拟参数和真实数据不匹配时，不要把 benchmark 排名外推成真实组织结论 |
 | 选择多模态整合器 | paired、unpaired 或 mosaic 数据集清单 | `python/11_scmmib_manifest.py` | SCMMIB benchmark | accuracy、robustness、scalability | benchmark 排名依赖任务和模态，不能直接视为普适排名 |
 | 多任务多模态整合评估 | 数据集清单和一个或多个任务 | `python/12_scmultibench_manifest.py` | scMultiBench | reduction、batch、clustering、classification、imputation、feature selection、spatial registration 指标 | 任务、模态、数据集和 split 不同，不能只引用一个总排名 |
 | nascent/mature 转录动力学 | nascent 与 mature count 矩阵、官方 config | `python/05_monod_template.py` | 先做数据匹配和模型比较；当前入口只生成 manifest | kinetic parameters、uncertainty（由官方包产生） | 不能当作常规 bulk DE 或普通 RNA velocity 的直接替代 |

@@ -32,6 +32,7 @@
 | 通用序列、表格、距离、多样性和系统发育操作 | `python/17_scikit_bio_manifest.py` | Python | FASTA/FASTQ/BIOM/TSV/Newick 等按操作选择 | 格式感知的生物信息对象和可追溯运行契约 | 基础工具/前置步骤 |
 | 空间域聚类、空间指标和专家共识 | `python/18_saccelerator_manifest.py` | Python | 空间数据、方法配置、指标和可选 expert labels | 多方法空间指标、共识聚类和高分歧区域审计 | 评估/支持分析 |
 | 空间 foundation model、域和组织架构 | `python/19_novae_manifest.py` | Python | 空间转录组/AnnData、可选 gene panel、checkpoint | spot/cell domain、SVG/pathway、批次校正表示和架构摘要 | 探索/支持分析 |
+| 多模态、空间和速度数据模拟 | `python/20_scmultisim_manifest.py` | R/Bioconductor manifest | cell tree、GRN、模态和可选空间/批次参数 | paired modality、spliced/unspliced、空间位置和已知 truth | benchmark/压力测试 |
 | 比较多模态整合器 | `python/11_scmmib_manifest.py` | Python | 数据集 manifest、paired/unpaired/mosaic 任务 | accuracy、robustness、scalability | 评估工具 |
 | 多任务多模态整合评估 | `python/12_scmultibench_manifest.py` | Python | 数据集 manifest、任务列表 | reduction/batch/clustering 等任务指标 | 评估工具 |
 | nascent/mature 转录动力学 | `python/05_monod_template.py` | Python | nascent 和 mature counts | kinetic parameters、模型不确定性 | 专题分析 |
@@ -142,7 +143,7 @@ R 入口是可复用函数，示例见各脚本末尾和 [`docs/quickstart.md`](
 
 ## 近期方法范围
 
-目录目前收录 22 个论文/评估条目和 5 个通用 R/Python 工具模板，覆盖 2021–2026 年的单细胞变换、feature selection、命运推断、复杂分支轨迹、cell-state density、foundation model、蛋白上下文、多模态空间组学、空间数据互操作、空间域聚类与共识、空间 foundation model、通用序列/表格/距离工具、整合 benchmark、跨物种整合、长读长、DTU 和 nanopore RNA 修饰。新增的 Nature Methods 条目包括 Mellon、MISO、SCMMIB、scMultiBench、NaRMBench、PINNACLE、PHLOWER、SpatialData、scikit-bio、SACCELERATOR 和 Novae；它们目前都先生成可审计 manifest，实际模型/benchmark/读写器/操作运行仍需官方环境。
+目录目前收录 23 个论文/评估条目和 5 个通用 R/Python 工具模板，覆盖 2021–2026 年的单细胞变换、feature selection、命运推断、复杂分支轨迹、cell-state density、foundation model、蛋白上下文、多模态空间组学、空间数据互操作、空间域聚类与共识、空间 foundation model、多模态/空间/速度数据模拟、通用序列/表格/距离工具、整合 benchmark、跨物种整合、长读长、DTU 和 nanopore RNA 修饰。新增的 Nature Methods 条目包括 Mellon、MISO、SCMMIB、scMultiBench、NaRMBench、PINNACLE、PHLOWER、SpatialData、scikit-bio、SACCELERATOR、Novae 和 scMultiSim；它们目前都先生成可审计 manifest，实际模型/benchmark/读写器/模拟/操作运行仍需官方环境。
 
 ## 相关仓库
 

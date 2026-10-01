@@ -47,7 +47,7 @@ write_ppi_network_baseline(edges, "results/ppi_network_baseline.csv")
 
 ## 3. Python 路径
 
-适合 CellRank 2、Mellon、PHLOWER、foundation model、PINNACLE、SpatialData、scikit-bio、SACCELERATOR、Novae、Nicheformer、MISO、SCMMIB、scMultiBench、NaRMBench、Monod、SATURN 和 UCE。先创建隔离环境，再记录 Python、包版本、网络版本和 checkpoint。
+适合 CellRank 2、Mellon、PHLOWER、foundation model、PINNACLE、SpatialData、scikit-bio、SACCELERATOR、Novae、scMultiSim、Nicheformer、MISO、SCMMIB、scMultiBench、NaRMBench、Monod、SATURN 和 UCE。先创建隔离环境，再记录 Python、包版本、网络版本和 checkpoint。
 
 ```bash
 python -m venv .venv
@@ -67,11 +67,12 @@ python python/16_spatialdata_manifest.py --datasets data/processed/spatialdata.z
 python python/17_scikit_bio_manifest.py --inputs data/processed/reads.fasta data/processed/metadata.tsv --operation sequence --format FASTA --output results/scikit_bio_manifest.json
 python python/18_saccelerator_manifest.py --datasets data/processed/spatialdata.zarr data/processed/cluster_labels.csv --methods method_a method_b consensus --metrics ARI CHAOS PAS spot_entropy --platform Visium --output results/saccelerator_manifest.json
 python python/19_novae_manifest.py --inputs data/processed/spatialdata.zarr data/processed/spot_metadata.csv --task domain_inference --checkpoint models/novae_checkpoint.pt --gene-panel config/gene_panel.tsv --platform Visium --output results/novae_manifest.json
+python python/20_scmultisim_manifest.py --tree config/cell_differential_tree.tsv --grn config/gene_regulatory_network.tsv --modalities rna atac velocity --batch-effects --seed 42 --output results/scmultisim_manifest.json
 python python/08_sample_level_summary.py --scores results/cellrank2/fate_probabilities.csv --metadata config/cell_metadata.csv --output results/cellrank2/fate_sample_level.csv
 python -m pip freeze > logs/python_freeze.txt
 ```
 
-foundation model、Mellon、PHLOWER、PINNACLE、SpatialData、scikit-bio、SACCELERATOR、Novae、MISO、SCMMIB、scMultiBench、NaRMBench、SATURN 和 Monod 的 manifest 脚本不会偷偷下载权重、PPI 网络或启动训练；它们只核对输入并写出可审计的下一步。SpatialData 入口还会把元素类型、坐标系、平台和存储路径固定下来，但不会自动完成读写、配准或 segmentation；scikit-bio 入口会固定操作和格式，但不会自动决定实验设计或统计检验；SACCELERATOR 入口会固定方法、数据集、空间指标和专家评审层，Novae 入口会固定空间域任务、gene panel、checkpoint 和平台信息，但不会把手工标签或模型分数变成真值。这样可以避免把大文件、不可复现的网络下载和未经核对的模型许可混进主分析。需要真实推理、读写或 benchmark 时，按 `catalog.csv` 的 `execution_mode` 安装官方包并保留运行日志。
+foundation model、Mellon、PHLOWER、PINNACLE、SpatialData、scikit-bio、SACCELERATOR、Novae、scMultiSim、MISO、SCMMIB、scMultiBench、NaRMBench、SATURN 和 Monod 的 manifest 脚本不会偷偷下载权重、PPI 网络或启动训练；它们只核对输入并写出可审计的下一步。SpatialData 入口还会把元素类型、坐标系、平台和存储路径固定下来，但不会自动完成读写、配准或 segmentation；scikit-bio 入口会固定操作和格式，但不会自动决定实验设计或统计检验；SACCELERATOR 入口会固定方法、数据集、空间指标和专家评审层，Novae 入口会固定空间域任务、gene panel、checkpoint 和平台信息，scMultiSim 入口会固定 tree、GRN、模态、噪声和 seed，但不会把手工标签、模型分数或模拟排名变成真值。这样可以避免把大文件、不可复现的网络下载和未经核对的模型许可混进主分析。需要真实推理、读写、模拟或 benchmark 时，按 `catalog.csv` 的 `execution_mode` 安装官方包并保留运行日志。
 
 ## 4. 换成真实数据前必须填的字段
 
@@ -89,7 +90,7 @@ foundation model、Mellon、PHLOWER、PINNACLE、SpatialData、scikit-bio、SACC
 - **smoke-tested：** 输入审计、mock CSV、manifest 和 CLI 参数检查都通过。
 - **baseline-function：** R 函数可以在本地 R/Bioconductor 环境执行，且输出表符合预期。
 - **integration-required：** Bambu、satuRn 和 CellRank 需要真实格式的输入，不能用当前两个 mock CSV 代替。
-- **manifest-only：** scGPT、scFoundation、Mellon、PHLOWER、PINNACLE、SpatialData、scikit-bio、SACCELERATOR、Novae、Nicheformer、MISO、SCMMIB、scMultiBench、NaRMBench、Monod、SATURN 和 UCE 当前只生成配置/审计文件，官方推理、读写或 benchmark 步骤要在固定环境中继续完成。
+- **manifest-only：** scGPT、scFoundation、Mellon、PHLOWER、PINNACLE、SpatialData、scikit-bio、SACCELERATOR、Novae、scMultiSim、Nicheformer、MISO、SCMMIB、scMultiBench、NaRMBench、Monod、SATURN 和 UCE 当前只生成配置/审计文件，官方推理、读写、模拟或 benchmark 步骤要在固定环境中继续完成。
 
 ## 6. 结果解释的最低要求
 

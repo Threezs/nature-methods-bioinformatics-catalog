@@ -62,6 +62,15 @@ spatial_foundation_model:
   record_batch_key: true
   record_section_split: true
   validate_with_orthogonal_markers: true
+simulation:
+  framework: scMultiSim
+  tree: data/real/cell_differential_tree.tsv
+  grn: data/real/gene_regulatory_network.tsv
+  modalities: [rna, atac, velocity, spatial]
+  spatial_config: data/real/spatial_interactions.yml
+  batch_effects: record_batch_effect_parameters
+  seed: record_seed
+  benchmark_split: record_train_validation_test_or_replicate_split
 reproducibility:
   save_session_info: true
   save_command_line: true

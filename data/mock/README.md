@@ -13,6 +13,7 @@
 - `spatialdata_table.csv`：用于 SpatialData manifest smoke test 的带坐标和标签小表，不代表真实空间分割、配准或组织结构。
 - `narmbench_reference.fa`：同时作为 scikit-bio sequence manifest smoke test 的 FASTA 占位输入。
 - `spatialdata_table.csv`：同时作为 SACCELERATOR manifest smoke test 的空间表占位输入，不代表真实聚类真值。
+- `cell_differential_tree.tsv` 与 `gene_regulatory_network.tsv`：用于 scMultiSim manifest smoke test 的最小 tree/GRN 占位输入，不代表真实细胞谱系或调控网络。
 
 它们可以用于：
 
@@ -21,6 +22,6 @@
 - `R/01_single_cell_transformations.R` 和 `R/02_feature_selection_benchmark.R` 的函数级示例。
 - `R/05_sample_level_summary.R` 和 `python/08_sample_level_summary.py` 的样本级汇总 smoke test。
 - `python/09_mellon_template.py`、`python/10_miso_manifest.py` 和 `python/11_scmmib_manifest.py` 的依赖轻 manifest smoke test。
-- `python/12_scmultibench_manifest.py`、`python/13_narmbench_manifest.py`、`python/14_pinnacle_manifest.py`、`python/15_phlower_manifest.py`、`python/16_spatialdata_manifest.py`、`python/17_scikit_bio_manifest.py` 和 `python/18_saccelerator_manifest.py` 的依赖轻 manifest smoke test。
+- `python/12_scmultibench_manifest.py`、`python/13_narmbench_manifest.py`、`python/14_pinnacle_manifest.py`、`python/15_phlower_manifest.py`、`python/16_spatialdata_manifest.py`、`python/17_scikit_bio_manifest.py`、`python/18_saccelerator_manifest.py`、`python/19_novae_manifest.py` 和 `python/20_scmultisim_manifest.py` 的依赖轻 manifest smoke test。
 
-它们不能代替完整方法输入。CellRank 2 需要 AnnData、neighbors、pseudotime 或 velocity layers；PHLOWER 需要真实多模态格式、共享 cell ID 和方向/根节点审计；SpatialData 还需要真实元素类型、坐标系、单位和序列化格式审计；scikit-bio 仍需按操作固定格式、序列/样本 ID、metadata 和 assay-specific assumptions；SACCELERATOR 需要跨数据集的方法版本、坐标、指标和专家评审协议，手工标签不自动等于真值；Bambu 需要 genome-aligned BAM/GTF/FASTA；satuRn 需要 transcript counts、tx2gene 和 biological replicates；foundation model、SATURN、Nicheformer、Monod、UCE 和 PINNACLE 需要各自的官方格式、网络/checkpoint 或 config。请以 `catalog.csv` 的 `execution_mode`、`validation_status` 和 `mock_input` 为准。
+它们不能代替完整方法输入。CellRank 2 需要 AnnData、neighbors、pseudotime 或 velocity layers；PHLOWER 需要真实多模态格式、共享 cell ID 和方向/根节点审计；SpatialData 还需要真实元素类型、坐标系、单位和序列化格式审计；scikit-bio 仍需按操作固定格式、序列/样本 ID、metadata 和 assay-specific assumptions；SACCELERATOR 需要跨数据集的方法版本、坐标、指标和专家评审协议，手工标签不自动等于真值；Novae 需要真实空间元素、gene-panel coverage、batch/section split 和 checkpoint；scMultiSim 需要按目标任务固定 tree、GRN、互作、噪声和 seed；Bambu 需要 genome-aligned BAM/GTF/FASTA；satuRn 需要 transcript counts、tx2gene 和 biological replicates；foundation model、SATURN、Nicheformer、Monod、UCE 和 PINNACLE 需要各自的官方格式、网络/checkpoint 或 config。请以 `catalog.csv` 的 `execution_mode`、`validation_status` 和 `mock_input` 为准。

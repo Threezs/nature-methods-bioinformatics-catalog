@@ -36,6 +36,8 @@ SACCELERATOR 适合回答“空间感知聚类在多平台、多组织和多数�
 
 Novae 适合回答“空间转录组中的细胞/spot domain 是否能跨 gene panel、组织或技术平台稳定迁移，以及哪些基因/通路和组织架构与 domain 相关”这类问题。先用 `python/19_novae_manifest.py` 固定输入元素、平台、gene-panel、batch key、checkpoint 和 section-level split，再与邻域聚类、marker/图像标注和 held-out section 比较。domain assignment、空间可变基因和 pathway score 是模型依赖的摘要；没有 registration、panel coverage 和正交 marker 验证时，不能把它们写成稳定的组织边界或因果机制。
 
+scMultiSim 适合回答“在有已知细胞结构、GRN、细胞互作、染色质和技术噪声真值时，一个算法能否恢复目标信号，以及它对 batch、模态或空间设置有多敏感”。先用 `python/20_scmultisim_manifest.py` 固定 cell differential tree、GRN、模态、spatial/interaction 参数、batch-effect 开关、随机种子和 benchmark split，再用少量经验数据做 sanity check。模拟器给出的是声明的生成模型下的 truth；它能支持压力测试和方法选择，不能替代真实组织的外部验证，也不能把某一组参数下的排名写成普适结论。
+
 scMultiBench 是 SCMMIB 的互补路线：它把 dimension reduction、batch correction、clustering、classification、imputation、feature selection 和 spatial registration 分开评估，并区分 vertical/diagonal/mosaic/cross 结构。使用时先选定任务和 split，再报告任务级指标，不能把多个任务压成一个“最佳方法”。
 
 NaRMBench 放在长读长 RNA 专题，而不是常规转录本定量路径。它用于比较 nanopore direct-RNA 修饰检测工具和 retraining 方案；RNA002/RNA004 chemistry、ground truth、重训练样本和 site-level calibration 都必须记录。结果只能支持“检测工具在该 chemistry/数据条件下的表现”，不能直接写成全转录组修饰机制。

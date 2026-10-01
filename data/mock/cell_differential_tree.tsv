@@ -1,0 +1,3 @@
+cell_id	parent	state
+cell_001	root	state_a
+cell_002	cell_001	state_b

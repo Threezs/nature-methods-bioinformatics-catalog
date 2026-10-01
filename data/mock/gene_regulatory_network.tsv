@@ -1,0 +1,3 @@
+source	target	weight
+GeneA	GeneB	0.8
+GeneB	GeneC	0.5
