@@ -1,0 +1,45 @@
+version: 1
+principle: choose_by_question_then_input_then_method
+categories:
+  - id: input_audit
+    label: 输入审计与可重复性
+    stage: 0
+    methods: [UTILITY_INPUT_AUDIT_R, UTILITY_INPUT_AUDIT_PY]
+    required_before: [all_other_categories]
+  - id: preprocessing
+    label: 单细胞预处理与表达几何
+    stage: 1
+    methods: [NM_TRANSFORM_2023, FEATURE_SELECTION_2025]
+  - id: trajectory
+    label: 轨迹、命运与状态转移
+    stage: 2
+    methods: [CELLRANK2_2024, MONOD_2025]
+  - id: foundation_models
+    label: foundation model、embedding 与预测
+    stage: 2
+    methods: [SCGPT_2024, SCFOUNDATION_2024, UCE_2026]
+  - id: spatial_context
+    label: 空间环境与 niche
+    stage: 2
+    methods: [NICHEFORMER_2025]
+  - id: transcriptomics
+    label: 长读长、转录本和 DTU
+    stage: 1
+    methods: [BAMBU_2023, SATURN_RN_DTU_2021]
+  - id: cross_species
+    label: 跨物种整合与标签迁移
+    stage: 2
+    methods: [SATURN_2024, UCE_2026]
+selection_rules:
+  - if: raw_count_matrix
+    first: input_audit
+  - if: single_cell_without_explicit_transition_prior
+    prefer: preprocessing
+  - if: trajectory_or_fate_question_with_time_or_velocity
+    allow: trajectory
+  - if: foundation_model_requested
+    require: classical_baseline_and_checkpoint_manifest
+  - if: long_read_bam_available
+    prefer: BAMBU_2023
+  - if: transcript_counts_with_replicates
+    allow: SATURN_RN_DTU_2021

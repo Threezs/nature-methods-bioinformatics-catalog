@@ -21,14 +21,22 @@ def main() -> int:
     args = p.parse_args()
     if len(args.species) != len(args.adata):
         p.error("--species and --adata must have the same number of values")
+    adata_paths = [Path(x) for x in args.adata]
+    missing = [str(path) for path in adata_paths if not path.exists()]
+    embedding_path = Path(args.protein_embeddings)
+    if not embedding_path.exists():
+        missing.append(str(embedding_path))
+    if missing:
+        p.error("missing SATURN inputs: " + ", ".join(missing))
     manifest = {
         "method": "SATURN",
         "paper_doi": "10.1038/s41592-024-02191-z",
         "official_repo": "https://github.com/snap-stanford/SATURN",
         "zenodo": "https://doi.org/10.5281/zenodo.10258201",
         "species": args.species,
-        "adata": [str(Path(x)) for x in args.adata],
-        "protein_embeddings": str(Path(args.protein_embeddings)),
+        "adata": [str(path) for path in adata_paths],
+        "protein_embeddings": str(embedding_path),
+        "execution_mode": "manifest-only; run the pinned official SATURN workflow next",
         "next_step": "Run the pinned official SATURN training/evaluation workflow after validating gene IDs, labels, and protein embedding coverage.",
     }
     out = Path(args.output)

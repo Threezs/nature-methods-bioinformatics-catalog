@@ -12,5 +12,7 @@ jobs:
           python-version: "3.11"
       - name: Validate catalog
         run: python python/validate_manifest.py
+      - name: Smoke-test dependency-light input audit
+        run: python python/00_input_audit.py --input data/mock/scrna_counts.csv --output /tmp/input_audit.json
       - name: Compile Python templates
         run: python -m compileall -q python

@@ -10,6 +10,8 @@ from pathlib import Path
 def make_manifest(input_h5ad: Path, checkpoint_dir: Path, output: Path) -> dict:
     if not input_h5ad.exists():
         raise FileNotFoundError(input_h5ad)
+    if not checkpoint_dir.exists():
+        raise FileNotFoundError(checkpoint_dir)
     return {
         "method": "Nicheformer",
         "input_h5ad": str(input_h5ad),

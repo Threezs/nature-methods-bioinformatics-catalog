@@ -14,14 +14,21 @@ def main() -> int:
     p.add_argument("--species", default="record_in_config", help="Species label for the input dataset")
     p.add_argument("--output", default="uce_manifest.json")
     args = p.parse_args()
+    input_path = Path(args.input_h5ad)
+    checkpoint_path = Path(args.checkpoint)
+    if not input_path.exists():
+        p.error(f"missing input AnnData: {input_path}")
+    if not checkpoint_path.exists() and "://" not in args.checkpoint:
+        p.error(f"missing checkpoint path (or provide a URI): {checkpoint_path}")
     manifest = {
         "method": "UCE",
         "paper_doi": "10.1038/s41586-026-10689-z",
         "official_repo": "https://github.com/snap-stanford/UCE",
         "pmid": "42420460",
-        "input_h5ad": str(Path(args.input_h5ad)),
+        "input_h5ad": str(input_path),
         "species": args.species,
-        "checkpoint": str(Path(args.checkpoint)),
+        "checkpoint": str(checkpoint_path) if "://" not in args.checkpoint else args.checkpoint,
+        "execution_mode": "manifest-only; run the pinned official UCE workflow next",
         "next_step": "Run the pinned official UCE embedding workflow after validating gene identifiers, protein-token coverage, and species metadata.",
     }
     out = Path(args.output)

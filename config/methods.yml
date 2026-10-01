@@ -1,16 +1,18 @@
 project: nature-methods-bioinformatics-catalog
 language_priority: R
 species: Mus musculus
-count_convention: raw_integer_counts
+primary_input_convention: raw_integer_counts_for_R_baselines
 single_cell:
   input_h5ad: data/real/your_dataset.h5ad
+  input_layer: document_raw_counts_or_record_layer_used
   batch_key: batch
   sample_key: sample_id
   condition_key: condition
   feature_selection:
-    default: highly_variable_genes
+    default: variance_ranking_baseline
     n_top_genes: 2000
-    batch_aware: true
+    batch_aware: descriptive_block_variance
+    model_based_optional: scran::modelGeneVar
 bulk_or_long_read:
   genome_build: mm10
   annotation_release: GENCODE_mouse_release_to_record
@@ -23,13 +25,13 @@ foundation_models:
   record_sha256: true
   run_gpu_only_when_requested: true
   uce_checkpoint: models/uce_checkpoint.pt
-cross_species:
-  species: [Homo_sapiens, Mus_musculus]
-  adata_paths: [data/real/human.h5ad, data/real/mouse.h5ad]
-  protein_embeddings_dir: models/protein_embeddings
-  method: SATURN
 reproducibility:
   save_session_info: true
   save_command_line: true
   save_input_hashes: true
   save_full_results: true
+cross_species:
+  species: [Homo_sapiens, Mus_musculus]
+  adata_paths: [data/real/human.h5ad, data/real/mouse.h5ad]
+  protein_embeddings_dir: models/protein_embeddings
+  method: SATURN

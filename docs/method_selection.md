@@ -8,23 +8,17 @@
 
 ### 整合和 query mapping
 
-`R/02_feature_selection_benchmark.R` 提供 HVG、批次感知 HVG 和 lineage marker 的可审计实现。大规模 atlas 或 reference/query 项目，先固定 feature-selection 规则，再比较 Harmony、scVI 或 Seurat 等整合器；不要在每个 query 上重新挑一套特征。
+`R/02_feature_selection_benchmark.R` 默认提供透明的方差排序和分组均值效应 baseline；它不等同于完整的 HVG 模型，也不替代 replicate-aware 差异表达。需要正式 HVG 时，使用脚本中的 `select_hvg_scran()`，先按 scran/scuttle 规则准备 `SingleCellExperiment` 和 logcounts。大规模 atlas 或 reference/query 项目，先固定 feature-selection 规则，再比较 Harmony、scVI 或 Seurat 等整合器；不要在每个 query 上重新挑一套特征。
 
 ### 长读长和转录本层面
 
 Bambu 适合从已比对的长读长 BAM 中做 context-aware transcript discovery/quantification。satuRn 适合在 transcript counts 已经可靠的前提下做 DTU。两者都需要 transcript-to-gene 关系、参考版本和样本级重复；单个样本不能支持可靠的组间推断。
 
-### 跨物种单细胞
-
-SATURN (`python/06_saturn_template.py`) 用蛋白 embedding 和表达共同学习跨物种细胞空间。先核对物种、gene/protein coverage、标签一致性和 checkpoint，再比较 marker-based label transfer 等可解释基线。
-
-UCE (`python/07_uce_manifest.py`) 提供零样本的单细胞表示，可用于新物种或新组织的 embedding 和标签迁移。把它当作外部表示分支，保留原始表达和可解释 baseline，并记录 checkpoint、词表覆盖和物种元数据。
-
 ## Python/模型路径
 
-CellRank 2 应该在已有邻居图、pseudotime、RNA velocity 或时间点信息后使用。先检查不同 kernel 的 terminal states 和 fate probabilities 是否稳定，再把 lineage-correlated genes 当作候选机制线索。
+CellRank 2 应该在已有 kNN 邻居图、pseudotime、RNA velocity 或时间点信息后使用。先检查不同 kernel 的 terminal states 和 fate probabilities 是否稳定，再把 lineage-correlated genes 当作候选机制线索。若要比较 APAP/IR 条件，必须保留 `sample_id`/`donor_id`，先在样本层面汇总 fate probability 或 terminal-state proportion，再做组间比较；细胞级输出不能直接当作独立重复。
 
-scGPT、scFoundation、Nicheformer 和 Monod 都应被当作扩展分析。它们的 checkpoint、GPU、训练数据、版本和权重许可要单独登记；每次运行要和简单可解释 baseline（PCA/nearest-neighbor、edgeR/DESeq2 或经典 CellRank）比较。
+scGPT、scFoundation、Nicheformer、Monod、SATURN 和 UCE 都应被当作扩展分析。当前目录中的这些入口主要生成并审计 manifest，实际模型推理仍需官方包、checkpoint、GPU/配置和版本锁定。每次运行要和简单可解释 baseline（PCA/nearest-neighbor、edgeR/DESeq2 或经典 CellRank）比较。
 
 ## 适合 APAP/IR/CRLM 项目的组合
 
@@ -37,7 +31,8 @@ scGPT、scFoundation、Nicheformer 和 Monod 都应被当作扩展分析。它�
 
 - 输入矩阵是否为原始整数 count，行列方向是否明确？
 - biological replicate、batch、condition 是否进入设计或分层验证？
-- 过滤和 feature selection 是否在 reference/query 之间保持一致？
+- 过滤和 feature selection 是否在 reference/query 之间保持一致？R/02 的方差排序是否被误写成正式 HVG？
 - 人鼠 ortholog、基因组版本、GTF 版本和 transcript version 是否记录？
 - foundation model 是否记录 checkpoint URL、版本、SHA-256、显存和推理参数？
+- 细胞级 fate/embedding 结果是否按 sample/donor 汇总并做跨重复稳定性检查？
 - 是否保存完整结果、失败日志、软件版本和可重复命令？

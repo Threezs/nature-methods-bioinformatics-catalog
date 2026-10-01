@@ -31,13 +31,14 @@ run_satuRn <- function(se, contrasts, outdir = "results/satuRn", formula = ~ 0 +
         BPPARAM = BiocParallel::bpparam(),
         verbose = TRUE
     )
+    # forceEmpirical is available in some development versions but is not
+    # present in the current Bioconductor release. Keep the stable call here.
     tested <- satuRn::testDTU(
         object = fitted,
         contrasts = contrasts,
         diagplot1 = TRUE,
         diagplot2 = TRUE,
-        sort = FALSE,
-        forceEmpirical = FALSE
+        sort = FALSE
     )
     saveRDS(tested, file.path(outdir, "satuRn_tested.rds"))
     invisible(tested)

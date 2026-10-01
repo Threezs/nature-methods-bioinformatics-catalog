@@ -18,3 +18,14 @@ jobs:
         shell: bash
         run: |
           Rscript -e 'files <- list.files("R", pattern = "\\.R$", recursive = TRUE, full.names = TRUE); invisible(lapply(files, parse)); cat("Parsed", length(files), "R files\n")'
+      - name: Smoke-test input audit
+        shell: bash
+        run: |
+          Rscript - <<'RS'
+          source("R/00_input_audit.R")
+          counts <- as.matrix(read.csv("data/mock/scrna_counts.csv", row.names = 1, check.names = FALSE))
+          metadata <- read.csv("data/mock/scrna_metadata.csv", stringsAsFactors = FALSE)
+          stopifnot(nrow(audit_count_matrix(counts, require_integer = TRUE)) == ncol(counts))
+          audit_metadata(metadata, expected_n = ncol(counts), id_column = "cell_id", expected_ids = colnames(counts))
+          cat("Input audit smoke test passed\n")
+          RS
