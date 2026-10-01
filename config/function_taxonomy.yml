@@ -43,6 +43,10 @@ categories:
     label: 空间组学数据结构、坐标和互操作
     stage: 1
     methods: [SPATIALDATA_2025]
+  - id: bioinformatics_toolkit
+    label: 通用序列、表格、距离和系统发育工具
+    stage: 1
+    methods: [SCIKITBIO_2026]
   - id: integration_benchmark
     label: 多模态整合方法评估
     stage: 2
@@ -76,6 +80,8 @@ selection_rules:
     require: integration_benchmark_and_modality_key_audit
   - if: spatial_omics_from_multiple_platforms
     require: SPATIALDATA_2025_coordinate_and_element_audit
+  - if: sequence_table_distance_or_phylogeny_operation
+    prefer: SCIKITBIO_2026
   - if: long_read_bam_available
     prefer: BAMBU_2023
   - if: transcript_counts_with_replicates

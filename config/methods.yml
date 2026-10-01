@@ -39,6 +39,12 @@ spatial_data:
   record_units: true
   record_transform_chain: true
   platform: record_platform_and_reader_version
+bioinformatics_toolkit:
+  tool: scikit-bio
+  operation: sequence_or_table_or_distance_or_diversity_or_taxonomy_or_phylogeny
+  input_format: record_FASTA_FASTQ_BIOM_TSV_Newick_or_other
+  record_sample_ids: true
+  record_assay_specific_metadata: true
 reproducibility:
   save_session_info: true
   save_command_line: true

@@ -21,5 +21,6 @@
 | 蛋白靶点和药物优先级 | expression + PPI + context metadata audit | PINNACLE；报告网络版本、上下文分层和 held-out 指标 |
 | 多模态复杂分支轨迹 | shared cell ID + root/direction audit | PHLOWER；与 CellRank/graph baseline 比较 branch stability |
 | 跨平台空间组学 | element/coordinate/unit/serialization audit | SpatialData；再进入 Nicheformer、MISO 或传统空间邻域分析 |
+| 序列、距离、多样性、分类或系统发育 | operation + format + metadata audit | scikit-bio；再按 assay 选择统计检验和样本级设计 |
 
 矩阵只用于形成可审计的候选方案；最终结果仍需项目自己的样本量、重复、外部验证和实验设计支持。
