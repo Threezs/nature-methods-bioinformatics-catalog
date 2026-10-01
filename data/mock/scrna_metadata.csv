@@ -1,0 +1,9 @@
+cell_id,condition,batch,sample_id
+C01,Control,B1,S01
+C02,Control,B1,S02
+C03,Control,B2,S03
+C04,Control,B2,S04
+A01,APAP,B1,S05
+A02,APAP,B1,S06
+A03,APAP,B2,S07
+A04,APAP,B2,S08
