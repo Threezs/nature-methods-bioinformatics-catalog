@@ -26,7 +26,11 @@ categories:
   - id: foundation_models
     label: foundation model、embedding 与预测
     stage: 2
-    methods: [SCGPT_2024, SCFOUNDATION_2024, UCE_2026]
+    methods: [SCGPT_2024, SCFOUNDATION_2024, UCE_2026, PINNACLE_2024]
+  - id: protein_context
+    label: 单细胞蛋白上下文与靶点优先级
+    stage: 2
+    methods: [PINNACLE_2024]
   - id: spatial_context
     label: 空间环境与 niche
     stage: 2
