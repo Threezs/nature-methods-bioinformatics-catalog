@@ -18,7 +18,11 @@ categories:
   - id: trajectory
     label: 轨迹、命运与状态转移
     stage: 2
-    methods: [CELLRANK2_2024, MELLON_2024]
+    methods: [CELLRANK2_2024, MELLON_2024, PHLOWER_2025]
+  - id: multimodal_trajectory
+    label: 多模态复杂分支轨迹
+    stage: 2
+    methods: [PHLOWER_2025]
   - id: state_density
     label: 细胞状态密度与时间连续化
     stage: 2
