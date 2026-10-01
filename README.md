@@ -10,6 +10,7 @@
 4. [`docs/sample_level_reporting.md`](docs/sample_level_reporting.md)：把 CellRank、embedding 和 niche 的细胞级输出汇总回 sample/donor 实验单位。
 5. [`templates/method_run_manifest.yml`](templates/method_run_manifest.yml)：每次运行要固定的输入、版本、checkpoint、baseline 和限制。
 6. [`docs/environment_matrix.md`](docs/environment_matrix.md)：R、Python、GPU、参考文件和 checkpoint 的环境分层。
+7. [`docs/decision_matrix.md`](docs/decision_matrix.md)：把实验单位、baseline、资源、最低证据和不能回答的问题放在同一张矩阵里。
 
 ## 功能导航
 
@@ -35,6 +36,7 @@
 | nanopore RNA 修饰检测评估 | `python/13_narmbench_manifest.py` | Python | nanopore reads、reference、chemistry | site-level detection、PR、定量审计 | 专题分析 |
 
 完整的输入、限制、方法 ID 和官方代码见 [`catalog.csv`](catalog.csv)；功能机器可读规则见 [`config/function_taxonomy.yml`](config/function_taxonomy.yml)；通用模板见 [`data/utility_templates.csv`](data/utility_templates.csv)。
+方法级选择约束见 [`data/method_decision_matrix.csv`](data/method_decision_matrix.csv)。
 
 ## 推荐的最短分析路径
 
