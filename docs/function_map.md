@@ -18,6 +18,7 @@
 | R 版 PPI/network 可解释基线 | PPI edge table（可带权重） | `R/06_protein_context_baseline.R` | 节点 degree、weighted degree、任务特异排序 | protein degree/weighted-degree 表 | 没有 protein-level context 标签时不能冒充上下文模型 |
 | 空间 niche 和组织环境 | 空间转录组或带空间上下文的单细胞数据 | `python/04_nicheformer_template.py` | 传统邻域统计、空间配体-受体分析 | niche embedding、context prediction | 域偏移明显或没有空间验证时只能作为探索结果 |
 | 多模态空间组学整合 | 共享 spot/cell key 的多种空间组学和图像特征 | `python/10_miso_manifest.py` | MISO 与传统 modality-specific clustering | multimodal embedding、spatial clusters | 模态未对齐、坐标约定不一致或旧环境无法固定时不要运行 |
+| 空间数据结构和跨平台互操作 | SpatialData/Zarr、表、图像、labels、shapes、points | `python/16_spatialdata_manifest.py` | 平台原生 reader、坐标/配准 QC | 统一元素、坐标变换和读写审计 | 不能自动修复分割、配准、单位或生物混杂；先完成元素与坐标审计 |
 | 选择多模态整合器 | paired、unpaired 或 mosaic 数据集清单 | `python/11_scmmib_manifest.py` | SCMMIB benchmark | accuracy、robustness、scalability | benchmark 排名依赖任务和模态，不能直接视为普适排名 |
 | 多任务多模态整合评估 | 数据集清单和一个或多个任务 | `python/12_scmultibench_manifest.py` | scMultiBench | reduction、batch、clustering、classification、imputation、feature selection、spatial registration 指标 | 任务、模态、数据集和 split 不同，不能只引用一个总排名 |
 | nascent/mature 转录动力学 | nascent 与 mature count 矩阵、官方 config | `python/05_monod_template.py` | 先做数据匹配和模型比较；当前入口只生成 manifest | kinetic parameters、uncertainty（由官方包产生） | 不能当作常规 bulk DE 或普通 RNA velocity 的直接替代 |
@@ -43,7 +44,7 @@
 
 ### CRLM 肿瘤微环境和空间问题
 
-`00_input_audit → 01_transformations → 02_feature_selection → Nicheformer/MISO 或传统空间邻域分析 → 配体-受体/通路验证`。Nicheformer/MISO 的输出用于发现候选 niche，不能单独证明配体直接改变了某个程序；多模态整合前先运行 SCMMIB 任务/数据集清单审计。
+`00_input_audit → SpatialData 元素/坐标审计 → 01_transformations → 02_feature_selection → Nicheformer/MISO 或传统空间邻域分析 → 配体-受体/通路验证`。SpatialData 负责跨平台元素和坐标的可追踪组织，不代替 segmentation/registration QC；Nicheformer/MISO 的输出用于发现候选 niche，不能单独证明配体直接改变了某个程序；多模态整合前先运行 SCMMIB 任务/数据集清单审计。
 
 ### 长读长或转录本机制
 
