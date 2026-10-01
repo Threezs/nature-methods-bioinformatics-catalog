@@ -14,5 +14,7 @@ jobs:
         run: python python/validate_manifest.py
       - name: Smoke-test dependency-light input audit
         run: python python/00_input_audit.py --input data/mock/scrna_counts.csv --output /tmp/input_audit.json
+      - name: Smoke-test sample-level summary
+        run: python python/08_sample_level_summary.py --scores data/mock/cell_scores.csv --metadata data/mock/scrna_metadata.csv --output /tmp/sample_level_summary.csv
       - name: Compile Python templates
         run: python -m compileall -q python

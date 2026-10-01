@@ -29,3 +29,14 @@ jobs:
           audit_metadata(metadata, expected_n = ncol(counts), id_column = "cell_id", expected_ids = colnames(counts))
           cat("Input audit smoke test passed\n")
           RS
+      - name: Smoke-test sample-level summary
+        shell: bash
+        run: |
+          Rscript - <<'RS'
+          source("R/05_sample_level_summary.R")
+          scores <- read.csv("data/mock/cell_scores.csv", stringsAsFactors = FALSE)
+          metadata <- read.csv("data/mock/scrna_metadata.csv", stringsAsFactors = FALSE)
+          result <- summarize_cell_scores(scores, metadata)
+          stopifnot(nrow(result) == 4L, all(result$n_cells_used == 2L))
+          cat("Sample-level summary smoke test passed\n")
+          RS

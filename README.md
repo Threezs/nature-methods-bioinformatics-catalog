@@ -15,6 +15,7 @@
 | 我想解决的问题 | 入口 | 语言 | 输入 | 主要输出 | 推荐级别 |
 |---|---|---|---|---|---|
 | 先检查数据和样本关系 | `R/00_input_audit.R` / `python/00_input_audit.py` | R/Python | count 矩阵、metadata 或 AnnData | 输入审计报告和运行 manifest | 必做 |
+| 把细胞级结果汇总回 sample/donor | `R/05_sample_level_summary.R` / `python/08_sample_level_summary.py` | R/Python | fate/embedding/niche 分数 + metadata | 样本级结果表 | 条件比较前必做 |
 | 单细胞 count 如何变换 | `R/01_single_cell_transformations.R` | R | gene × cell 原始整数矩阵 | 多种变换矩阵、PCA-ready features | 主分析候选 |
 | 整合前如何做特征排序 | `R/02_feature_selection_benchmark.R` | R | count、batch、细胞标签 | variance ranking；可选 scran HVG；分组候选表 | 主分析候选 |
 | 细胞命运、pseudotime、velocity | `python/01_cellrank2_template.py` | Python | `.h5ad`、邻居图、pseudotime/velocity | fate probability、terminal state | 支持分析 |

@@ -48,6 +48,7 @@ python -m pip install --upgrade pip
 python python/00_input_audit.py --input data/processed/your_dataset.h5ad --output results/input_audit.json
 python python/01_cellrank2_template.py --input data/processed/your_dataset.h5ad --output results/cellrank2 --kernel pseudotime
 python python/07_uce_manifest.py --input-h5ad data/processed/your_dataset.h5ad --checkpoint models/uce_checkpoint.pt --output results/uce_manifest.json
+python python/08_sample_level_summary.py --scores results/cellrank2/fate_probabilities.csv --metadata config/cell_metadata.csv --output results/cellrank2/fate_sample_level.csv
 python -m pip freeze > logs/python_freeze.txt
 ```
 

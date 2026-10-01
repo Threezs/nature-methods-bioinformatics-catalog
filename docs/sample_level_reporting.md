@@ -19,16 +19,12 @@ CellRank、embedding、niche prediction 和细胞比例都是以细胞为单位�
 ```r
 fate <- read.csv("results/cellrank2/fate_probabilities.csv", row.names = 1, check.names = FALSE)
 meta <- read.csv("config/cell_metadata.csv", stringsAsFactors = FALSE)
-fate$cell_id <- rownames(fate)
-dat <- merge(meta, fate, by = "cell_id", all = FALSE)
-
-sample_level <- aggregate(
-    dat[, setdiff(colnames(fate), "cell_id"), drop = FALSE],
-    by = list(sample_id = dat$sample_id, condition = dat$condition),
-    FUN = mean
-)
+source("R/05_sample_level_summary.R")
+sample_level <- summarize_cell_scores(fate, meta)
 write.csv(sample_level, "results/cellrank2/fate_sample_level.csv", row.names = FALSE)
 ```
+
+Python 的无 pandas 版本是 `python/08_sample_level_summary.py`，可以直接处理 CellRank 导出的 CSV。
 
 如果只有两个或三个 sample，样本级估计会很不稳定；应该把结果写成效应方向和不确定性，并用独立实验验证，而不是只报告细胞级 P 值。
 
@@ -50,4 +46,3 @@ S01,M01,Control,B1,320,0.18,mean,future,open
 ```
 
 这个文件应与方法输出、运行 manifest 和结果解释文件放在同一个 `results/` 子目录，保证任何一个结论都能追溯到样本级数据。
-

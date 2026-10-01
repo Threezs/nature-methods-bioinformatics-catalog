@@ -1,3 +1,5 @@
 id,title,function,language,input,output,entrypoint,readiness,caution
 UTILITY_INPUT_AUDIT_R,Input audit and sample contract,输入审计,R,count matrix plus metadata,audit report and validation errors,R/00_input_audit.R,ready,does not replace biological design review
 UTILITY_INPUT_AUDIT_PY,Input audit and run manifest,输入审计,Python,AnnData path or matrix path,JSON audit manifest,python/00_input_audit.py,ready,does not inspect all assay-specific semantics
+UTILITY_SAMPLE_SUMMARY_R,Cell-level to sample-level summary,样本级汇总,R,cell scores plus metadata,sample-level score table,R/05_sample_level_summary.R,ready,required before condition-level inference
+UTILITY_SAMPLE_SUMMARY_PY,Cell-level to sample-level summary,样本级汇总,Python,cell scores CSV plus metadata CSV,sample-level score table,python/08_sample_level_summary.py,ready,required before condition-level inference

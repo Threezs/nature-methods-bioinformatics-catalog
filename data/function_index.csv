@@ -1,6 +1,8 @@
 method_id,category,function,language,minimal_input,required_format,primary_output,stage,execution_mode
 UTILITY_INPUT_AUDIT_R,input_audit,输入审计,R,all projects,count matrix + metadata,audit report,0,baseline-function
 UTILITY_INPUT_AUDIT_PY,input_audit,输入审计,Python,all projects,AnnData/CSV/TSV path,JSON manifest,0,baseline-function
+UTILITY_SAMPLE_SUMMARY_R,input_audit,样本级汇总,R,cell scores + metadata,cell IDs and sample IDs,sample-level table,0,baseline-function
+UTILITY_SAMPLE_SUMMARY_PY,input_audit,样本级汇总,Python,cell scores CSV + metadata CSV,cell IDs and sample IDs,sample-level table,0,baseline-function
 NM_TRANSFORM_2023,preprocessing,单细胞表达变换,R,raw gene x cell counts,count matrix,transformed matrix,1,baseline-function
 FEATURE_SELECTION_2025,preprocessing,特征选择与 atlas/query,R,counts + batch/labels,feature table,selected features and scores,1,baseline-function
 CELLRANK2_2024,trajectory,轨迹与命运,Python,h5ad + neighbors + pseudotime/velocity,h5ad,fate probabilities,2,runtime-required
