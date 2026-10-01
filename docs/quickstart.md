@@ -50,7 +50,7 @@ python python/01_cellrank2_template.py --input data/processed/your_dataset.h5ad 
 python python/07_uce_manifest.py --input-h5ad data/processed/your_dataset.h5ad --checkpoint models/uce_checkpoint.pt --output results/uce_manifest.json
 python python/09_mellon_template.py --embedding results/pca_embedding.csv --metadata config/cell_metadata.csv --output results/mellon_manifest.json
 python python/10_miso_manifest.py --omics data/processed/spatial_rna.csv data/processed/spatial_atac.csv --spot-metadata config/spot_metadata.csv --output results/miso_manifest.json
-python python/11_scmmib_manifest.py --dataset-manifest config/multimodal_benchmark.csv --task paired --output results/scmmib_manifest.json
+python python/11_scmmib_manifest.py --dataset-manifest templates/multimodal_dataset_manifest.csv --task paired --output results/scmmib_manifest.json
 python python/08_sample_level_summary.py --scores results/cellrank2/fate_probabilities.csv --metadata config/cell_metadata.csv --output results/cellrank2/fate_sample_level.csv
 python -m pip freeze > logs/python_freeze.txt
 ```

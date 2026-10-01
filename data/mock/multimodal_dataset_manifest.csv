@@ -1,0 +1,4 @@
+dataset_id,task,modality,path,shared_key,coordinate_system
+demo_paired,paired,rna,data/mock/scrna_counts.csv,cell_id,not_spatial
+demo_paired,paired,adt,data/mock/cell_scores.csv,cell_id,not_spatial
+demo_spatial,paired,image_features,data/mock/cell_embedding.csv,cell_id,synthetic_xy

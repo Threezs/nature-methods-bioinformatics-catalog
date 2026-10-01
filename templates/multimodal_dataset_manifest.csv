@@ -1,0 +1,4 @@
+dataset_id,task,modality,path,shared_key,coordinate_system
+replace_with_dataset,paired,rna,data/real/rna_matrix.h5ad,spot_id,xy_um
+replace_with_dataset,paired,adt,data/real/adt_matrix.h5ad,spot_id,xy_um
+replace_with_dataset,paired,image_features,data/real/image_features.csv,spot_id,xy_um

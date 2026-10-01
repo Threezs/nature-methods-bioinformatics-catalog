@@ -1,10 +1,12 @@
 # Mock 数据范围
 
-当前 mock 目录提供两个轻量 CSV：
+当前 mock 目录提供轻量、非生物学真实性保证的 CSV：
 
 - `scrna_counts.csv`：10 个基因 × 8 个细胞的非负整数矩阵；
 - `scrna_metadata.csv`：cell ID、condition、batch 和 sample ID；当前示例为 4 个样本、每个样本 2 个细胞。
 - `cell_scores.csv`：用于演示 fate/embedding 分数如何汇总回 sample level。
+- `cell_embedding.csv`：8 个细胞的合成高维表示，用于 Mellon manifest smoke test。
+- `multimodal_dataset_manifest.csv`：用于 MISO/SCMMIB 的共享 key、模态和坐标约定示例。
 
 它们可以用于：
 
@@ -12,5 +14,6 @@
 - `python/00_input_audit.py` 的 CSV smoke test；
 - `R/01_single_cell_transformations.R` 和 `R/02_feature_selection_benchmark.R` 的函数级示例。
 - `R/05_sample_level_summary.R` 和 `python/08_sample_level_summary.py` 的样本级汇总 smoke test。
+- `python/09_mellon_template.py`、`python/10_miso_manifest.py` 和 `python/11_scmmib_manifest.py` 的依赖轻 manifest smoke test。
 
 它们不能代替完整方法输入。CellRank 2 需要 AnnData、neighbors、pseudotime 或 velocity layers；Bambu 需要 genome-aligned BAM/GTF/FASTA；satuRn 需要 transcript counts、tx2gene 和 biological replicates；foundation model、SATURN、Nicheformer、Monod 和 UCE 需要各自的官方格式、checkpoint 或 config。请以 `catalog.csv` 的 `execution_mode`、`validation_status` 和 `mock_input` 为准。
