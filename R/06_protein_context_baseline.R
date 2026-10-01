@@ -25,9 +25,12 @@ ppi_network_baseline <- function(edges,
         weights <- suppressWarnings(as.numeric(edges[[weight_col]]))
         if (any(!is.finite(weights))) stop("network weights must be finite numeric values")
         weighted <- numeric(length(nodes))
-        weighted <- weighted + tapply(weights, match(source, nodes), sum, default = 0)
-        weighted <- weighted + tapply(weights, match(target, nodes), sum, default = 0)
-        weighted[is.na(weighted)] <- 0
+        source_sums <- tapply(weights, match(source, nodes), sum)
+        target_sums <- tapply(weights, match(target, nodes), sum)
+        weighted[as.integer(names(source_sums))] <-
+            weighted[as.integer(names(source_sums))] + as.numeric(source_sums)
+        weighted[as.integer(names(target_sums))] <-
+            weighted[as.integer(names(target_sums))] + as.numeric(target_sums)
         result$weighted_degree <- as.numeric(weighted)
     }
     order_args <- list(-result$degree)
