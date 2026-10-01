@@ -9,8 +9,11 @@
 | Bambu | R + Bioconductor bambu | 依 BAM 大小而定 | genome-aligned BAM、GTF、FASTA | 需要参考文件 |
 | satuRn | R + Bioconductor satuRn、limma、SummarizedExperiment | CPU/多核 | transcript counts、tx2gene、重复样本 | 需要 transcript 输入 |
 | CellRank 2 | Python + scanpy + cellrank + scvelo（若用 velocity） | CPU 可运行；大数据建议更多内存 | h5ad、neighbors、pseudotime 或 Ms/velocity layers | runtime-required |
+| Mellon | 官方 Python Mellon 环境 | CPU/GPU 取决于 representation 和细胞数 | 高维 cell representation、可选时间 metadata | 当前只生成 manifest |
 | scGPT/scFoundation | 官方 Python 环境 | 通常需要 GPU/大内存 | h5ad/counts、checkpoint | 当前只生成 manifest |
 | Nicheformer | 官方 Python 环境 | GPU 推荐 | spatial/context AnnData、checkpoint | 当前只生成 manifest |
+| MISO | 官方仓库 Python 3.7 环境；Git-LFS | 小于万 spot 的训练可先 CPU/GPU 试跑；图像特征提取更重 | 多模态空间数据、对齐图像特征、ViT 权重 | 当前只生成 manifest |
+| SCMMIB | 官方 benchmark/pipeline 环境 | 依任务规模而定，需记录 CPU/GPU/内存 | paired/unpaired/mosaic 数据集和任务清单 | 当前只生成 manifest |
 | Monod | 官方 monod + monod_examples 环境 | CPU/GPU 取决于拟合规模 | nascent/mature 数据、官方 config | 当前只生成 manifest |
 | SATURN | 官方 SATURN 环境 | GPU、较大内存 | 多物种 AnnData、protein embeddings | 当前只生成 manifest |
 | UCE | 官方 UCE 环境 | GPU 推荐 | AnnData、checkpoint、gene/protein vocabulary | 当前只生成 manifest |
@@ -52,4 +55,3 @@ CellRank、scGPT、scFoundation、Nicheformer、Monod、SATURN 和 UCE 的依赖
 - 输入文件哈希、输出文件清单和失败日志。
 
 只要其中一个字段缺失，就把结果标为“不可完全复现”，不要只根据图形外观宣称已经复现论文方法。
-

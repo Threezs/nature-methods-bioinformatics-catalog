@@ -14,3 +14,6 @@ MONOD_2025,transcription_dynamics,nascent/mature 动力学,Python,nascent + matu
 SATURN_2024,cross_species,跨物种整合,Python,multi-species h5ad + protein embeddings,h5ad/embeddings,manifest for official workflow,2,manifest-only
 BAMBU_2023,transcriptomics,长读长转录本,R,genome-aligned BAM + GTF + FASTA,BAM/GTF/FASTA,transcript counts,1,package+reference-required
 SATURN_RN_DTU_2021,transcriptomics,transcript usage / DTU,R,transcript counts + annotation + replicates,counts + metadata,DTU results,1,package+transcript-inputs-required
+MELLON_2024,state_density,cell-state density and temporal interpolation,Python,cell representation + optional time metadata,embedding/metadata,cell-state density and gene-change scores,2,manifest-only
+MISO_2025,spatial_context,multimodal spatial omics integration,Python,aligned omics + optional image features,spot-level modalities,multimodal embedding and spatial clusters,2,manifest-only
+SCMMIB_2025,integration_benchmark,multimodal integration benchmarking,Python,dataset manifest + task label,paired/unpaired/mosaic modality inputs,accuracy robustness and scalability metrics,2,manifest-only

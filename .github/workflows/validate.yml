@@ -16,5 +16,7 @@ jobs:
         run: python python/00_input_audit.py --input data/mock/scrna_counts.csv --output /tmp/input_audit.json
       - name: Smoke-test sample-level summary
         run: python python/08_sample_level_summary.py --scores data/mock/cell_scores.csv --metadata data/mock/scrna_metadata.csv --output /tmp/sample_level_summary.csv
+      - name: Smoke-test recent-method manifests
+        run: make smoke-method-manifests
       - name: Compile Python templates
         run: python -m compileall -q python

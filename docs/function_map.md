@@ -10,9 +10,12 @@
 | 单细胞表达变换 | 原始 gene × cell 整数矩阵 | `R/01_single_cell_transformations.R` | log1p-CPM、shifted-log、Pearson residuals 并行比较 | PCA-ready matrix、变换比较报告 | 不要根据 UMAP 外观单独决定变换 |
 | 特征排序、可选正式 HVG 和分组候选 marker | count 矩阵、batch、细胞标签 | `R/02_feature_selection_benchmark.R` | 默认透明 variance ranking；可选 `select_hvg_scran()` | feature table、选择分数 | 默认函数不是 replicate-aware DE；不要把均值效应写成机制证据 |
 | 轨迹、命运和终末状态 | `.h5ad`、邻居图、pseudotime 或 velocity | `python/01_cellrank2_template.py` | CellRank 2 的多 kernel 比较 | fate probabilities、terminal states | 没有状态变化先验时不要把 fate probability 当成事实 |
+| 细胞状态密度和时间连续化 | 高维 cell representation，可选时间点/样本 metadata | `python/09_mellon_template.py` | diffusion/PCA 表示上的密度 baseline | cell-state density、gene-change score、时间连续化 | 密度是表示空间中的占据，不是因果 lineage 或细胞比例 |
 | 预训练 embedding、注释和扰动预测 | `.h5ad`/表达矩阵、checkpoint | `python/02_scgpt_embedding_template.py` | scFoundation、UCE | embedding、annotation 或 perturbation prediction | 小样本时不能把 embedding 当作独立统计证据 |
 | 大规模单细胞表示和药物反应 | `.h5ad`、模型权重、GPU | `python/03_scFoundation_embedding_template.py` | scGPT、PCA/scVI baseline | embedding、任务预测 | 没有固定 checkpoint、显存和 baseline 时不宜直接用于论文主结论 |
 | 空间 niche 和组织环境 | 空间转录组或带空间上下文的单细胞数据 | `python/04_nicheformer_template.py` | 传统邻域统计、空间配体-受体分析 | niche embedding、context prediction | 域偏移明显或没有空间验证时只能作为探索结果 |
+| 多模态空间组学整合 | 共享 spot/cell key 的多种空间组学和图像特征 | `python/10_miso_manifest.py` | MISO 与传统 modality-specific clustering | multimodal embedding、spatial clusters | 模态未对齐、坐标约定不一致或旧环境无法固定时不要运行 |
+| 选择多模态整合器 | paired、unpaired 或 mosaic 数据集清单 | `python/11_scmmib_manifest.py` | SCMMIB benchmark | accuracy、robustness、scalability | benchmark 排名依赖任务和模态，不能直接视为普适排名 |
 | nascent/mature 转录动力学 | nascent 与 mature count 矩阵、官方 config | `python/05_monod_template.py` | 先做数据匹配和模型比较；当前入口只生成 manifest | kinetic parameters、uncertainty（由官方包产生） | 不能当作常规 bulk DE 或普通 RNA velocity 的直接替代 |
 | 跨物种整合和标签迁移 | 多物种 AnnData、蛋白 embedding | `python/06_saturn_template.py` | UCE；先做 ortholog/QC 审计 | universal embedding、跨物种标签 | 基因同源关系和蛋白覆盖率没有记录时不要解释跨物种差异 |
 | 零样本跨物种 embedding | AnnData、UCE checkpoint、基因/蛋白词表 | `python/07_uce_manifest.py` | SATURN、经典 reference mapping | zero-shot embedding、annotation transfer | checkpoint、词表覆盖和物种元数据缺失时不能复现 |
@@ -31,11 +34,11 @@
 
 ### APAP/IR 小鼠单细胞
 
-`00_input_audit → 01_transformations → 02_feature_selection → classical integration → CellRank 2（仅在有时间/velocity/状态先验时）`。如果需要人鼠比较，再把 SATURN 或 UCE 作为扩展结果，并单独报告 ortholog 覆盖率。CellRank 输出应按 sample/donor 汇总后再进行条件比较。
+`00_input_audit → 01_transformations → 02_feature_selection → classical integration → CellRank 2（仅在有时间/velocity/状态先验时） → Mellon（需要状态密度/连续时间问题时）`。如果需要人鼠比较，再把 SATURN 或 UCE 作为扩展结果，并单独报告 ortholog 覆盖率。CellRank/Mellon 输出应按 sample/donor 汇总后再进行条件比较。
 
 ### CRLM 肿瘤微环境和空间问题
 
-`00_input_audit → 01_transformations → 02_feature_selection → Nicheformer 或传统空间邻域分析 → 配体-受体/通路验证`。Nicheformer 的输出用于发现候选 niche，不能单独证明配体直接改变了某个程序。
+`00_input_audit → 01_transformations → 02_feature_selection → Nicheformer/MISO 或传统空间邻域分析 → 配体-受体/通路验证`。Nicheformer/MISO 的输出用于发现候选 niche，不能单独证明配体直接改变了某个程序；多模态整合前先运行 SCMMIB 任务/数据集清单审计。
 
 ### 长读长或转录本机制
 

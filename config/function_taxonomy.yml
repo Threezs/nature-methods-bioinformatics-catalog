@@ -18,7 +18,11 @@ categories:
   - id: trajectory
     label: 轨迹、命运与状态转移
     stage: 2
-    methods: [CELLRANK2_2024]
+    methods: [CELLRANK2_2024, MELLON_2024]
+  - id: state_density
+    label: 细胞状态密度与时间连续化
+    stage: 2
+    methods: [MELLON_2024]
   - id: foundation_models
     label: foundation model、embedding 与预测
     stage: 2
@@ -26,7 +30,11 @@ categories:
   - id: spatial_context
     label: 空间环境与 niche
     stage: 2
-    methods: [NICHEFORMER_2025]
+    methods: [NICHEFORMER_2025, MISO_2025]
+  - id: integration_benchmark
+    label: 多模态整合方法评估
+    stage: 2
+    methods: [SCMMIB_2025]
   - id: transcription_dynamics
     label: nascent/mature 转录动力学
     stage: 2
@@ -48,6 +56,8 @@ selection_rules:
     allow: trajectory
   - if: foundation_model_requested
     require: classical_baseline_and_checkpoint_manifest
+  - if: multimodal_integration_requested
+    require: integration_benchmark_and_modality_key_audit
   - if: long_read_bam_available
     prefer: BAMBU_2023
   - if: transcript_counts_with_replicates

@@ -20,9 +20,12 @@
 | 单细胞 count 如何变换 | `R/01_single_cell_transformations.R` | R | gene × cell 原始整数矩阵 | 多种变换矩阵、PCA-ready features | 主分析候选 |
 | 整合前如何做特征排序 | `R/02_feature_selection_benchmark.R` | R | count、batch、细胞标签 | variance ranking；可选 scran HVG；分组候选表 | 主分析候选 |
 | 细胞命运、pseudotime、velocity | `python/01_cellrank2_template.py` | Python | `.h5ad`、邻居图、pseudotime/velocity | fate probability、terminal state | 支持分析 |
+| 细胞状态密度和时间连续化 | `python/09_mellon_template.py` | Python | 高维 cell representation，可选时间/样本 metadata | cell-state density、gene-change score、时间插值 | 探索/支持分析 |
 | 预训练模型做 embedding/注释 | `python/02_scgpt_embedding_template.py` | Python | `.h5ad`、checkpoint | embedding、注释或扰动预测 manifest | 探索分析 |
 | 大规模单细胞表示或药物反应 | `python/03_scFoundation_embedding_template.py` | Python | `.h5ad`、checkpoint、GPU | embedding、任务预测审计 | 探索分析 |
 | 空间组织环境和 niche | `python/04_nicheformer_template.py` | Python | 空间或上下文单细胞数据 | niche embedding、context prediction | 探索/支持分析 |
+| 多模态空间组学整合 | `python/10_miso_manifest.py` | Python | 对齐的空间组学模态，可选图像特征 | multimodal embedding、spatial clusters | 探索分析 |
+| 比较多模态整合器 | `python/11_scmmib_manifest.py` | Python | 数据集 manifest、paired/unpaired/mosaic 任务 | accuracy、robustness、scalability | 评估工具 |
 | nascent/mature 转录动力学 | `python/05_monod_template.py` | Python | nascent 和 mature counts | kinetic parameters、模型不确定性 | 专题分析 |
 | 多物种整合和标签迁移 | `python/06_saturn_template.py` | Python | 多物种 AnnData、蛋白 embedding | 跨物种 embedding、标签迁移 | 探索分析 |
 | 零样本细胞 embedding | `python/07_uce_manifest.py` | Python | AnnData、UCE checkpoint | zero-shot embedding manifest | 探索分析 |
@@ -80,7 +83,7 @@ R 入口是可复用函数，示例见各脚本末尾和 [`docs/quickstart.md`](
 
 ## 近期方法范围
 
-目录目前收录 11 个论文方法和 2 个通用输入审计模板，覆盖 2021–2026 年的单细胞变换、feature selection、命运推断、foundation model、空间 niche、跨物种整合、长读长和 DTU。近年的 Nature Methods 条目包括 CellRank 2、scGPT、scFoundation、feature-selection benchmark、Bambu、SATURN、Monod 和 Nicheformer；UCE 作为 2026 年 Nature 的跨物种 foundation model 补充。
+目录目前收录 14 个论文/评估条目和 4 个通用 R/Python 工具模板，覆盖 2021–2026 年的单细胞变换、feature selection、命运推断、cell-state density、foundation model、多模态空间组学、整合 benchmark、跨物种整合、长读长和 DTU。新增的 Nature Methods 条目包括 Mellon、MISO 和 SCMMIB；它们目前都先生成可审计 manifest，实际模型/benchmark 运行仍需官方环境。
 
 ## 相关仓库
 
