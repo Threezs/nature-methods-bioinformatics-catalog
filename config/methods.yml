@@ -25,6 +25,13 @@ foundation_models:
   record_sha256: true
   run_gpu_only_when_requested: true
   uce_checkpoint: models/uce_checkpoint.pt
+protein_context:
+  expression: data/real/your_dataset.h5ad
+  ppi_network: data/real/protein_network.tsv
+  context_metadata: data/real/context_metadata.csv
+  checkpoint: models/pinnacle_checkpoint.pt
+  record_network_version: true
+  record_sha256: true
 reproducibility:
   save_session_info: true
   save_command_line: true
